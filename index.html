@@ -240,8 +240,8 @@
         }
         
         .progress-text {
-            text-align: center;
             color: #A07F56; /* 焦糖色 */
+            text-align: center;
             font-weight: bold;
             margin-bottom: 30px;
             font-size: 1.1em;
@@ -806,7 +806,7 @@
         }
         
         .dos-card h4 {
-            color: #2e7d32;
+            color: #c62828;
             margin-bottom: 15px;
         }
         
@@ -1194,9 +1194,9 @@
             <div class="report-section">
                 <h3>📜 第一部分：角色定位与核心驱动力</h3>
                 <h4>你的原型：“全能守护者”</h4>
-                <p>你的关系原型是**全能守护者 (MIST)**。这代表你在关系中扮演着提供稳定、指引方向和解决问题的“年上”角色。你拥有高成熟度、独立自主和稳定的生活节奏。你的伴侣通常会是被你吸引的、寻求安全感和新鲜感的“年下”类型。</p>
+                <p>你的关系原型是**全能守护者 (MIST)**。这代表你在关系中扮演着提供稳定、指引方向和解决问题的“年上”角色。你拥有高成熟度、独立自主和稳定的生活节奏。你的伴侣通常会是寻求安全感和新鲜感的“年下”类型。</p>
                 
-                <h4>你的核心需求与挑战</h4>
+                <h4>你的核心驱动力与挑战</h4>
                 <p>你的核心驱动力是**“责任感”**与**“安全感”**。你渴望通过对关系的规划和控制，来确保这段关系是稳定、可预测的。你的挑战在于，你容易在不知不觉中承担了过多的责任，让伴侣失去了成长的空间，最终导致关系失衡。</p>
             </div>
             
@@ -1239,13 +1239,13 @@
                 </div>
                 
                 <h4>7种沟通冲突解决话术</h4>
-                <p style="background: #e8f5e9; padding: 15px; border-radius: 8px; color: #2e7d32;">
+                <p style="background: #E8F5E9; padding: 15px; border-radius: 8px; color: #2e7d32;">
                     <strong>场景1：伴侣寻求指导</strong><br>
                     ❌ "你这样想就对了，听我的。"<br>
                     ✅ "这是一个方法，但你觉得这样做，对你来说最大的挑战会是什么？" (将“指导”变成“提问”)
                 </p>
                 
-                <p style="background: #e8f5e9; padding: 15px; border-radius: 8px; color: #2e7d32; margin-top: 15px;">
+                <p style="background: #E8F5E9; padding: 15px; border-radius: 8px; color: #2e7d32; margin-top: 15px;">
                     <strong>场景2：伴侣抱怨你“太强势”</strong><br>
                     ❌ "我这是为你好，你还不懂吗？"<br>
                     ✅ "对不起，我没注意到我的语气太重了。下次请提醒我，我更想和你一起讨论，而不是替你决定。" (承认自己的角色失衡)
@@ -1285,52 +1285,98 @@
                 </div>
             </div>
             
+            <div class="report-section">
+                <h3>⚠️ 避坑指南</h3>
+                
+                <div class="dos-donts">
+                    <div class="donts-card">
+                        <h4>❌ 千万别做的3件事</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid #FFC8C8;">
+                                <strong>1. 查手机/监控社交媒体</strong><br>
+                                这种行为会破坏信任基础，降低伴侣的安全感。
+                            </li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid #FFC8C8;">
+                                <strong>2. 用“我都是为你好”来压制</strong><br>
+                                权威式的保护欲，会让伴侣失去自我成长空间。
+                            </li>
+                            <li style="padding: 10px 0;">
+                                <strong>3. 将责任全揽在身</strong><br>
+                                过度的付出感和责任感容易导致关系失衡和内耗。
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dos-card">
+                        <h4>✅ 一定要做的3件事</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid #a5d6a7;">
+                                <strong>1. 建立“非父母”边界</strong><br>
+                                允许伴侣犯错，把伴侣视为平等的成年人。
+                            </li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid #a5d6a7;">
+                                <strong>2. 允许情感依赖</strong><br>
+                                在独立的同时，也要展示自己的脆弱面，增加亲密感。
+                            </li>
+                            <li style="padding: 10px 0;">
+                                <strong>3. 培养共同目标</strong><br>
+                                用共同的理想规划未来，而非仅用物质稳定伴侣。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="generateReportImage()" style="margin-bottom: 15px; background: #D55D30;">🖼️ 生成报告卡片 (保存分享)</button>
+            
+            <div id="saveModal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; overflow-y: auto; padding: 20px; display: none; flex-direction: column; align-items: center;">
+                <div style="color: white; font-size: 18px; margin-bottom: 15px; font-weight: bold; text-align: center;">👇 长按下方图片保存到相册 👇</div>
+                <img id="generatedReportImg" style="width: 100%; max-width: 450px; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.2);">
+                <button class="btn btn-secondary" onclick="closeSaveModal()" style="margin-top: 20px; width: auto; padding: 10px 30px; background: white; color: #333; border: none;">关闭</button>
+            </div>
+            
             <button class="btn btn-secondary" onclick="location.reload()">重新测评</button>
         </div>
         
         <div id="adminPanel" class="card hidden">
-            <div class="admin-panel">
-                <h2>🔐 管理员后台</h2>
+            <h2>🔐 管理员后台</h2>
+            <div class="input-group">
+                <input type="password" id="adminPassword" placeholder="请输入管理员密码">
+            </div>
+            <button class="btn btn-primary" onclick="verifyAdmin()">登录</button>
+            
+            <div id="adminContent" class="hidden">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalCards">0</div>
+                        <div class="stat-label">卡密总数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="usedCards">0</div>
+                        <div class="stat-label">已使用</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="unusedCards">0</div>
+                        <div class="stat-label">未使用</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="deviceCount">0</div>
+                        <div class="stat-label">绑定设备数</div>
+                    </div>
+                </div>
                 
+                <h3 style="margin: 30px 0 15px 0;">生成卡密</h3>
                 <div class="input-group">
-                    <input type="password" id="adminPassword" placeholder="请输入管理员密码">
+                    <input type="number" id="cardCount" placeholder="输入生成数量（1-1000）" min="1" max="1000" value="10">
+                </div>
+                <button class="btn btn-primary" onclick="generateCards()">生成卡密</button>
+                
+                <h3 style="margin: 30px 0 15px 0;">最近使用记录</h3>
+                <div class="recent-records" id="recentRecords">
+                    <div class="record-item">暂无记录</div>
                 </div>
                 
-                <button class="btn btn-primary" onclick="verifyAdmin()">登录</button>
-                
-                <div id="adminContent" class="hidden">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-number" id="totalCards">0</div>
-                            <div class="stat-label">卡密总数</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="usedCards">0</div>
-                            <div class="stat-label">已使用</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="unusedCards">0</div>
-                            <div class="stat-label">未使用</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="deviceCount">0</div>
-                            <div class="stat-label">绑定设备数</div>
-                        </div>
-                    </div>
-                    
-                    <h3 style="margin: 30px 0 15px 0;">生成卡密</h3>
-                    <div class="input-group">
-                        <input type="number" id="cardCount" placeholder="输入生成数量（1-1000）" min="1" max="1000" value="10">
-                    </div>
-                    <button class="btn btn-primary" onclick="generateCards()">生成卡密</button>
-                    
-                    <h3 style="margin: 30px 0 15px 0;">最近使用记录</h3>
-                    <div class="recent-records" id="recentRecords">
-                        <div class="record-item">暂无记录</div>
-                    </div>
-                    
-                    <button class="btn btn-secondary" onclick="backToMain()">返回主页</button>
-                </div>
+                <button class="btn btn-secondary" onclick="backToMain()">返回主页</button>
             </div>
         </div>
     </div>
@@ -1343,8 +1389,8 @@
             /* 维度A: 主导 vs 追随 (年上掌控特质) */
             {text: '在关系中，我倾向于主动规划约会和旅行。', dimension: 0},
             {text: '我更喜欢对方听从我的意见，而不是争论不休。', dimension: 0},
+            {text: '为了团队和谐，我愿意放弃自己的观点。', dimension: 0, reverse: true}, // 反向计分
             {text: '我经常充当关系中的“决策者”。', dimension: 0},
-            {text: '做重大决定时，我会先和伴侣商量，但倾向于坚持己见。', dimension: 0},
             {text: '我喜欢掌控金钱，并管理共同的财务。', dimension: 0},
             {text: '我更喜欢被照顾和安排，而不是去照顾别人。', dimension: 0, reverse: true},
             {text: '我愿意为伴侣的快乐承担大部分责任。', dimension: 0},
@@ -1391,26 +1437,26 @@
         
         const options = ['完全不像我', '不太像我', '不确定', '有点像我', '非常像我'];
         
-        // [V5.0] 16型角色原型 (A1/B1/C1/D1)
+        // [V5.0] 16型角色原型
         const archetypeTypes = {
-            'MMITP': { name: '全能守护者', icon: '👑', desc: '你在关系中是绝对的“年上”角色，掌控欲、独立性、稳定性和务实性均高。你负责提供安全感和方向。', yearPref: '年上' },
-            'MMISF': { name: '温情领航员', icon: '🚢', desc: '你在关系中是温柔的“年上”角色，拥有掌控欲和稳定，但情感上更倾向于理想主义，是能带给伴侣方向和温暖的人。', yearPref: '年上' },
-            'MESSF': { name: '浪漫主导者', icon: '🌹', desc: '你在关系中是充满激情的“年上”角色，喜欢掌控，追求探索和浪漫，与你在一起充满火花，但也缺乏稳定感。', yearPref: '年上' },
-            'MITPS': { name: '独立探索家', icon: '🧭', desc: '你是关系中的“平衡者”，掌控欲低，独立性强，乐于探索，喜欢自由，与同龄人或略年上的对象更合得来。', yearPref: '平衡' },
-            'DITPP': { name: '平衡陪伴者', icon: '⚖️', desc: '你在关系中寻求平等和独立，务实且稳定，不倾向于主导或被主导，是最好的朋友和最稳定的伴侣。', yearPref: '平衡' },
-            'DSEPI': { name: '纯真追随者', icon: '☀️', desc: '你倾向于扮演“年下”角色，依赖性高，喜欢被照顾和指引，情感上是理想主义者，是关系中的活力来源。', yearPref: '年下' },
-            'DSEPF': { name: '理想浪漫家', icon: '✨', desc: '你非常需要安全感，情感上追求理想和浪漫，生活节奏不稳定，渴望一个成熟、稳定的“年上”角色来为你提供稳定。', yearPref: '年下' },
-            'DISTF': { name: '成熟探索家', icon: '🎓', desc: '独立、稳定、务实，但追求理想，你在关系中是成熟的“年上”对象，但也需要一定的独立空间。', yearPref: '年上' },
-            'MESTP': { name: '强势探索家', icon: '⚡', desc: '你掌控欲强、喜欢探索、但独立性高，你是关系中的“年上”角色，但生活节奏快，需要伴侣跟上你的步伐。', yearPref: '年上' },
-            'DSESP': { name: '随性依赖者', icon: '🧸', desc: '追随、依赖、探索、理想。你是一个寻求安全感和被照顾的角色，是典型的“年下”对象，你为关系带来情感价值。', yearPref: '年下' },
-            'MISTP': { name: '务实引导者', icon: '🗺️', desc: '你掌控、独立、稳定且务实，是关系中目标最明确的引导者，伴侣在你身边会感到非常安心。', yearPref: '年上' },
-            'DSISF': { name: '独立浪漫家', icon: '🔭', desc: '追随、独立、稳定、理想。你虽是“年下”角色，但独立性高，在稳定中追求浪漫，是关系中清醒的理想主义者。', yearPref: '平衡' },
-            'DDSFP': { name: '温顺的跟随者', icon: '🦢', desc: '依赖、追随、稳定、务实。你是典型的“年下”对象，将稳定放在首位，喜欢被成熟的伴侣安排和照顾。', yearPref: '年下' },
-            'MDETP': { name: '经验主义者', icon: '📚', desc: '掌控、独立、探索且务实。你经验丰富，乐于指导，是年上特质的集合，但偶尔会因独立性高而显得冷淡。', yearPref: '年上' },
-            'MESEI': { name: '平衡协调型', icon: '🤝', desc: '掌控欲适中、追求平等、稳定探索。你在年上和年下角色之间灵活切换，是关系中的平衡协调者。', yearPref: '平衡' },
-            'DDSFP': { name: '浪漫随性者', icon: '🌙', desc: '追随、依赖、探索且理想。你在情感上依赖对方，但在生活上随性探索，需要伴侣提供物质和情感的双重支持。', yearPref: '年下' }
+            /* M=Mature/Lead, D=Dependent/Follow; I=Independent, S=Seeking Care; T=Traditional/Stable, E=Explorer/Spontaneous; P=Pragmatic, F=Feeling/Idealist */
+            'MITP': { name: '全能守护者', icon: '👑', desc: '你在关系中是绝对的“年上”角色，掌控欲、独立性、稳定性和务实性均高。你负责提供安全感和方向。', yearPref: '年上' },
+            'MITS': { name: '温情领航员', icon: '🚢', desc: '你在关系中是温柔的“年上”角色，拥有掌控欲和稳定，但情感上更倾向于理想主义，是能带给伴侣方向和温暖的人。', yearPref: '年上' },
+            'MEEP': { name: '随性领导者', icon: '⚡', desc: '你在关系中是充满激情的“年上”角色，喜欢掌控，追求探索和浪漫，与你在一起充满火花，但也缺乏稳定感。', yearPref: '年上' },
+            'MEIS': { name: '独立探索家', icon: '🧭', desc: '你是关系中的“平衡者”，掌控欲低，独立性强，乐于探索，喜欢自由，与同龄人或略年上的对象更合得来。', yearPref: '平衡' },
+            'DITP': { name: '平衡陪伴者', icon: '⚖️', desc: '你在关系中寻求平等和独立，务实且稳定，不倾向于主导或被主导，是最好的朋友和最稳定的伴侣。', yearPref: '平衡' },
+            'DSIS': { name: '纯真追随者', icon: '☀️', desc: '你倾向于扮演“年下”角色，依赖性高，喜欢被照顾和指引，情感上是理想主义者，是关系中的活力来源。', yearPref: '年下' },
+            'DSEP': { name: '理想浪漫家', icon: '✨', desc: '你非常需要安全感，情感上追求理想和浪漫，生活节奏不稳定，渴望一个成熟、稳定的“年上”角色来为你提供稳定。', yearPref: '年下' },
+            'DSFP': { name: '成熟探索家', icon: '🎓', desc: '独立、稳定、务实，但追求理想，你在关系中是成熟的“年上”对象，但也需要一定的独立空间。', yearPref: '年上' },
+            'MSIP': { name: '务实引导者', icon: '🗺️', desc: '你掌控、独立、稳定且务实，是关系中目标最明确的引导者，伴侣在你身边会感到非常安心。', yearPref: '年上' },
+            'MSET': { name: '独立浪漫家', icon: '🔭', desc: '追随、独立、稳定、理想。你虽是“年下”角色，但独立性高，在稳定中追求浪漫，是关系中清醒的理想主义者。', yearPref: '平衡' },
+            'DSFP': { name: '浪漫随性者', icon: '🌙', desc: '追随、依赖、探索且理想。你在情感上依赖对方，但在生活上随性探索，需要伴侣提供物质和情感的双重支持。', yearPref: '年下' },
+            'DDEP': { name: '温顺的跟随者', icon: '🦢', desc: '依赖、追随、稳定、务实。你是典型的“年下”对象，将稳定放在首位，喜欢被成熟的伴侣安排和照顾。', yearPref: '年下' },
+            'DDFT': { name: '浪漫逃避者', icon: '🌪️', desc: '依赖、追随、探索、理想。渴望浪漫但逃避责任，需要成熟伴侣的引导和稳定。', yearPref: '年下' },
+            'MIEP': { name: '平衡探索型', icon: '🤝', desc: '掌控欲适中、追求平等、稳定探索。你在年上和年下角色之间灵活切换，是关系中的平衡协调者。', yearPref: '平衡' },
+            'DIPT': { name: '独立平衡型', icon: '⚖️', desc: '追求平等，独立自主，渴望稳定，不倾向于主导或被主导，是最好的朋友和最稳定的伴侣。', yearPref: '平衡' },
+            'MISTF': { name: '沉稳探索家', icon: '📘', desc: '掌控欲适中，独立稳定，务实且富有情感，是年上和平衡的综合体。', yearPref: '平衡' }
         };
-
 
         let currentPage = 'verify';
         let currentQuestion = 0;
@@ -1477,10 +1523,11 @@
             }
             
             const deviceId = getDeviceFingerprint();
-            // [V5.0] 关键修复：使用 'ageCards' 避免项目冲突
+            // 关键修复：使用 'ageCards' 避免项目冲突
             let cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
             let card = cards.find(c => c.code === cardCode);
             
+            // --- [V5.0] 逻辑修正开始 ---
             if (!card) {
                 // 如果卡号不存在，就创建它，并绑定到当前设备
                 card = { 
@@ -1510,7 +1557,7 @@
             card.testCount = (card.testCount || 0) + 1;
             card.lastUsedAt = new Date().toISOString();
             
-            // [V5.0] 关键修复：使用 'ageCards'
+            // 关键修复：使用 'ageCards'
             localStorage.setItem('ageCards', JSON.stringify(cards));
             
             currentCard = card;
@@ -1518,8 +1565,12 @@
         }
         
         function showTestPage() {
+            // [V5.0] 修正了页面切换函数
             document.getElementById('cardVerifyPage').classList.add('hidden');
             document.getElementById('testPage').classList.remove('hidden');
+            document.getElementById('fullReportPage').classList.add('hidden');
+            document.getElementById('freeResultPage').classList.add('hidden');
+
             currentPage = 'test';
             currentQuestion = 0;
             answers = new Array(40).fill(0);
@@ -1555,11 +1606,13 @@
         function selectOption(value) {
             answers[currentQuestion] = value;
             // 自动下一题
-            if (currentQuestion < 39) {
-                nextQuestion();
-            } else {
-                renderQuestion(); // 刷新最后一个问题的选中状态
-            }
+            setTimeout(() => {
+                if (currentQuestion < 39) {
+                    nextQuestion();
+                } else {
+                    renderQuestion(); // 刷新最后一个问题的选中状态
+                }
+            }, 200);
         }
         
         function prevQuestion() {
@@ -1604,7 +1657,7 @@
             typeCode += (dimensionScores[2] > 30) ? "T" : "E"; // C: Traditional/Stable vs E: Explorer/Spontaneous
             typeCode += (dimensionScores[3] > 30) ? "P" : "F"; // D: Pragmatic/Practical vs F: Feeling/Idealist
 
-            const resultType = archetypeTypes[typeCode] || archetypeTypes['DSIP']; // 默认平衡探索家
+            const resultType = archetypeTypes[typeCode] || archetypeTypes['DSEF']; // 默认浪漫追随者
 
             sessionStorage.setItem('testResult', JSON.stringify({
                 scores: dimensionScores.map(score => Math.round((score / dimensionCounts[0]) * 4)), // 保持 4-20分
@@ -1621,21 +1674,222 @@
         function showFreeResult() {
             const result = JSON.parse(sessionStorage.getItem('testResult'));
             
+            document.getElementById('cardVerifyPage').classList.add('hidden');
             document.getElementById('testPage').classList.add('hidden');
+            document.getElementById('fullReportPage').classList.add('hidden');
             document.getElementById('freeResultPage').classList.remove('hidden');
             currentPage = 'freeResult';
-            
-            // [V5.0] 替换免费结果
-            document.getElementById('archetypeIcon').textContent = result.archetypeIcon;
-            document.getElementById('archetypeName').textContent = `${result.archetypeName} (${result.typeCode})`;
-            
-            document.getElementById('typeName').textContent = `“${result.archetypeName}”人格`;
-            document.getElementById('typeDesc').textContent = result.archetypeDesc;
 
-            // ... (省略部分代码以保持简洁)
+            // ... (填充结果代码) ...
+            
+            drawRadarChart('radarChart', result.scores);
+            
+            const scoresList = document.getElementById('scoresList');
+            const dimensionNames = ['主导 vs 追随', '独立 vs 依赖', '稳定 vs 探索', '务实 vs 理想'];
+            const dimensionIcons = ['👑', '🛡️', '🕰️', '📜'];
+            
+            scoresList.innerHTML = '';
+            result.scores.forEach((score, i) => {
+                const scoreItem = document.createElement('div');
+                scoreItem.className = 'score-item';
+                scoreItem.innerHTML = `
+                    <div class="score-item-name">${dimensionIcons[i]} ${dimensionNames[i]}</div>
+                    <div class="score-item-value">${score} / 20</div>
+                    <div class="score-item-desc">${score > 12 ? '高分倾向' : '低分倾向'}</div>
+                `;
+                scoresList.appendChild(scoreItem);
+            });
         }
         
-        // ... (其余函数) ...
+        function drawRadarChart(canvasId, scores) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            const isMobile = window.innerWidth <= 768;
+            
+            const existingChart = Chart.getChart(canvasId);
+            if (existingChart) {
+                existingChart.destroy();
+            }
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['主导/追随', '独立/依赖', '稳定/探索', '务实/理想'],
+                    datasets: [{
+                        label: '你的得分 (4-20分)',
+                        data: scores,
+                        backgroundColor: 'rgba(160, 127, 86, 0.2)', /* 焦糖色 */
+                        borderColor: '#A07F56', /* 焦糖色 */
+                        borderWidth: 3,
+                        pointBackgroundColor: '#A07F56',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: isMobile ? 1 : 1.1,
+                    layout: {
+                        padding: isMobile ? {top: 15, bottom: 15, left: 5, right: 5} : {top: 30, bottom: 30, left: 30, right: 30}
+                    },
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 20,
+                            ticks: {
+                                stepSize: 5,
+                                font: {size: isMobile ? 9 : 11}
+                            },
+                            pointLabels: {
+                                font: {size: isMobile ? 11 : 13, weight: 'bold'},
+                                color: '#856847', /* 深焦糖色 */
+                                padding: isMobile ? 8 : 15
+                            },
+                            grid: {color: '#F5E8D6'}, /* 浅奶油 */
+                            angleLines: {color: '#F5E8D6'}
+                        }
+                    },
+                    plugins: {
+                        legend: {display: false}
+                    }
+                }
+            });
+        }
+        
+        /* [V3.2] 真实(模拟)上传逻辑 */
+        function handlePaymentProof(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // 只要有文件被选中 (无论是什么文件)，
+                // 我们就立即显示完整报告。
+                showFullReport();
+            }
+        }
+        
+        function showFullReport() {
+            const result = JSON.parse(sessionStorage.getItem('testResult'));
+            
+            document.getElementById('cardVerifyPage').classList.add('hidden');
+            document.getElementById('testPage').classList.add('hidden');
+            document.getElementById('freeResultPage').classList.add('hidden');
+            document.getElementById('fullReportPage').classList.remove('hidden');
+
+            // ... (其余填充代码) ...
+            
+            window.scrollTo(0, 0);
+        }
+        
+        function showAdminPanel() {
+            // [V5.0] 修正了页面切换函数
+            document.getElementById('cardVerifyPage').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+            document.getElementById('fullReportPage').classList.add('hidden');
+            document.getElementById('freeResultPage').classList.add('hidden');
+        }
+        
+        function verifyAdmin() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('adminContent').classList.remove('hidden');
+                loadAdminStats();
+            } else {
+                alert('密码错误');
+            }
+        }
+        
+        function loadAdminStats() {
+            // [V5.0] 关键修复：使用 'ageCards'
+            const cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
+            
+            const total = cards.length;
+            const used = cards.filter(c => c.deviceId).length;
+            const devices = new Set(cards.filter(c => c.deviceId).map(c => c.deviceId)).size;
+            
+            document.getElementById('totalCards').textContent = total;
+            document.getElementById('usedCards').textContent = used;
+            document.getElementById('unusedCards').textContent = total - used;
+            document.getElementById('deviceCount').textContent = devices;
+            
+            const recentRecords = document.getElementById('recentRecords');
+            const recentCards = cards
+                .filter(c => c.lastUsedAt)
+                .sort((a, b) => new Date(b.lastUsedAt) - new Date(a.lastUsedAt))
+                .slice(0, 5);
+            
+            if (recentCards.length === 0) {
+                recentRecords.innerHTML = '<div class="record-item">暂无记录</div>';
+            } else {
+                recentRecords.innerHTML = '';
+                recentCards.forEach(card => {
+                    const date = new Date(card.lastUsedAt);
+                    const dateStr = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`;
+                    
+                    const recordDiv = document.createElement('div');
+                    recordDiv.className = 'record-item';
+                    recordDiv.textContent = `${card.code} - 使用${card.testCount || 1}次 - ${dateStr}`;
+                    recentRecords.appendChild(recordDiv);
+                });
+            }
+        }
+        
+        function generateCards() {
+            const count = parseInt(document.getElementById('cardCount').value);
+            
+            if (!count || count < 1 || count > 1000) {
+                alert('请输入1-1000之间的数字');
+                return;
+            }
+            
+            // [V5.0] 关键修复：使用 'ageCards'
+            const cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
+            const newCards = [];
+            
+            for (let i = 0; i < count; i++) {
+                newCards.push({
+                    code: generateCardCode(),
+                    createdAt: new Date().toISOString()
+                });
+            }
+            
+            cards.push(...newCards);
+            localStorage.setItem('ageCards', JSON.stringify(cards));
+            
+            const text = newCards.map(c => c.code).join('\n');
+            const blob = new Blob([text], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `年上年下测评卡密_${new Date().getTime()}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            alert(`成功生成${count}个卡密！`);
+            loadAdminStats();
+        }
+        
+        function generateCardCode() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let code = 'TF-';
+            
+            for (let i = 0; i < 4; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            
+            code += '-';
+            
+            for (let i = 0; i < 4; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            
+            return code;
+        }
+        
+        function backToMain() {
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('cardVerifyPage').classList.remove('hidden');
+        }
         
         window.onload = function() {
             // [V5.0] 关键修复：使用 'ageCards'
@@ -1653,7 +1907,7 @@
             }
         };
 
-        // --- (V3.2/V5.0 通用 JS 函数) ---
+        // --- [V5.0] 辅助函数 ---
         function showWechatScan() {
             const qrElement = document.getElementById('wechatQR');
             if (qrElement) {
@@ -1675,7 +1929,39 @@
                 alert('复制失败，请手动复制');
             });
         }
-        /* ... (handlePaymentProof, generateReportImage, closeSaveModal, etc. remain the same) ... */
+
+        /* [V5.0] 生成报告图片功能 */
+        function generateReportImage() {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '正在生成图片...';
+            
+            const reportCard = document.getElementById('fullReportPage');
+            
+            html2canvas(reportCard, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                ignoreElements: (element) => {
+                    return element.tagName === 'BUTTON' || element.id === 'saveModal';
+                }
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const modal = document.getElementById('saveModal');
+                const img = document.getElementById('generatedReportImg');
+                img.src = imgData;
+                modal.style.display = 'flex';
+                btn.textContent = originalText;
+            }).catch(err => {
+                console.error(err);
+                alert('生成失败，请手动截图保存');
+                btn.textContent = originalText;
+            });
+        }
+
+        function closeSaveModal() {
+            document.getElementById('saveModal').style.display = 'none';
+        }
     </script>
 </body>
 </html>
