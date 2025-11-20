@@ -1510,6 +1510,16 @@ const archetypeTypes = {
             const cardInput = document.getElementById('cardInput');
             const errorDiv = document.getElementById('errorMessage');
             const cardCode = cardInput.value.trim().toUpperCase();
+            // [V3.3] 定义万能卡密
+    const MASTER_CODE = "GEMINI-MASTER";
+
+    // 检查是否为万能卡密，如果是，则跳过所有绑定和验证
+    if (cardCode === MASTER_CODE) {
+        currentCard = MASTER_CODE;
+        // 调用 showTestPage() 函数，进入答题页面
+        showTestPage(); 
+        return; // 立即退出 verifyCard 函数
+    }
             
             if (!cardCode) {
                 errorDiv.textContent = '请输入测评卡号';
@@ -1973,4 +1983,5 @@ const archetypeTypes = {
     </script>
 </body>
 </html>
+
 
