@@ -1439,28 +1439,36 @@
         
         // [V5.0] 16型角色原型
 // [V5.1 修复] 16型角色原型 (已确保语法干净)
+// --- [V5.2 修复后的 16型人格计算映射] ---
 const archetypeTypes = {
-    /* A: Mature/Lead(M) vs Dependent/Follow(D); B: Independent(I) vs Seeking Care(S); 
-       C: Traditional/Stable(T) vs Explorer/Spontaneous(E); D: Pragmatic/Practical(P) vs Feeling/Idealist(F) */
-    'MIEP': { name: '全能守护者', icon: '👑', desc: '你在关系中是绝对的“年上”角色，掌控欲、独立性、稳定性和务实性均高。你负责提供安全感和方向。', yearPref: '年上' },
-    'MIST': { name: '理性引路人', icon: '🧭', desc: '你独立、稳定且务实，是关系中目标最明确的引导者。你偏向“年上”特质，能带给伴侣稳定和安全感。', yearPref: '年上' },
-    'DSES': { name: '浪漫追随者', icon: '✨', desc: '你依赖性高，喜欢追随和被照顾，情感上是理想主义者，是典型的“年下”对象，你为关系带来情感价值。', yearPref: '年下' },
-    'DITF': { name: '平衡探索家', icon: '⚖️', desc: '你寻求平等和独立，乐于探索，不愿主导或被主导，是最好的朋友和最稳定的伴侣。', yearPref: '平衡' },
-    'MISTF': { name: '沉稳探索家', icon: '📘', desc: '掌控欲适中，独立稳定，务实且富有情感，是年上和平衡的综合体。', yearPref: '平衡' },
-    'MESEI': { name: '平衡协调型', icon: '🤝', desc: '掌控欲适中、追求平等、稳定探索。你在年上和年下角色之间灵活切换，是关系中的平衡协调者。', yearPref: '平衡' },
-    'DSIP': { name: '独立浪漫家', icon: '🔭', desc: '追随、独立、稳定、理想。你虽是“年下”角色，但独立性高，在稳定中追求浪漫，是关系中清醒的理想主义者。', yearPref: '平衡' },
-    'MSEP': { name: '强势探索家', icon: '⚡', desc: '你掌控欲强、喜欢探索、但独立性高，你是关系中的“年上”角色，但生活节奏快，需要伴侣跟上你的步伐。', yearPref: '年上' },
-    // 以下为未分析到的16型中的其他结果（保持结构完整）
-    'DITF': { name: '理想浪漫家', icon: '🌹', desc: '你在关系中是充满激情的“年上”角色，喜欢掌控，追求探索和浪漫，与你在一起充满火花，但也缺乏稳定感。', yearPref: '年下' },
-    'DSIS': { name: '随性依赖者', icon: '🧸', desc: '追随、依赖、探索、理想。你是一个寻求安全感和被照顾的角色，是典型的“年下”对象，你为关系带来情感价值。', yearPref: '年下' },
-    'MIES': { name: '温情领航员', icon: '🚢', desc: '你在关系中是温柔的“年上”角色，拥有掌控欲和稳定，但情感上更倾向于理想主义，是能带给伴侣方向和温暖的人。', yearPref: '年上' },
-    'DSESF': { name: '浪漫追随者', icon: '☀️', desc: '你倾向于扮演“年下”角色，依赖性高，喜欢被照顾和指引，情感上是理想主义者，是关系中的活力来源。', yearPref: '年下' },
-    'MSETF': { name: '理性引路人', icon: '🗺️', desc: '你独立、稳定且务实，是关系中目标最明确的引导者，伴侣在你身边会感到非常安心。', yearPref: '年上' },
-    'MIST': { name: '全能守护者', icon: '👑', desc: '你在关系中是绝对的“年上”角色，掌控欲、独立性、稳定性和务实性均高。你负责提供安全感和方向。', yearPref: '年上' },
-    'DIPT': { name: '独立平衡型', icon: '⚖️', desc: '追求平等，独立自主，渴望稳定，不倾向于主导或被主导，是最好的朋友和最稳定的伴侣。', yearPref: '平衡' },
-    'DSES': { name: '温顺的跟随者', icon: '🦢', desc: '依赖、追随、稳定、务实。你是典型的“年下”对象，将稳定放在首位，喜欢被成熟的伴侣安排和照顾。', yearPref: '年下' }
+    /* M: Mature/Lead(主导) | D: Dependent/Follow(追随)
+       I: Independent(独立) | S: Seeking Care(依赖)
+       T: Traditional/Stable(稳定) | E: Explorer/Spontaneous(探索)
+       P: Pragmatic/Practical(务实) | F: Feeling/Idealist(理想) */
+    
+    // --- 年上倾向 (M***) ---
+    'MIPT': { name: '全能守护者', icon: '👑', desc: '高主导、高独立、高稳定、高务实。成熟稳重，是关系的绝对支柱。', yearPref: '年上' },
+    'MIPF': { name: '务实引导者', icon: '🛠️', desc: '高主导、高独立、高务实，但情感上追求理想。是能提供物质和精神双重引导的年上。', yearPref: '年上' },
+    'MIST': { name: '理性引路人', icon: '🧭', desc: '高主导、高独立、高稳定，但情感上略依赖。是关系中稳定的导师和引领者。', yearPref: '年上' },
+    'MISF': { name: '温情领航员', icon: '🚢', desc: '高主导、高独立、高理想，是能提供方向和温暖的年上。', yearPref: '年上' },
+    
+    'MEPT': { name: '随性领导者', icon: '💡', desc: '高主导、高探索、高稳定，独立性一般。在关系中是充满活力和新鲜感的领导者。', yearPref: '年上' },
+    'MEPF': { name: '强势探索家', icon: '⚡', desc: '高主导、高探索、高务实，是行动派的年上。', yearPref: '年上' },
+    'MEST': { name: '掌控依赖型', icon: '🔗', desc: '高主导、高探索，但略依赖和稳定。倾向于掌控一切，但情感上需要支持。', yearPref: '年上' },
+    'MESF': { name: '浪漫支配者', icon: '🔥', desc: '高主导、高探索、高理想，是关系中充满激情和浪漫的年上。', yearPref: '年上' },
 
+    // --- 年下倾向 (D***) ---
+    'DIPT': { name: '独立平衡型', icon: '⚖️', desc: '低主导（追随）、高独立、高稳定、高务实。虽然追随，但自我独立性强，是追求平稳的伴侣。', yearPref: '平衡' },
+    'DIPF': { name: '务实追随者', icon: '📈', desc: '低主导、高独立、高务实，但追求理想。是脚踏实地，但又渴望浪漫的年下。', yearPref: '平衡' },
+    'DIST': { name: '温顺的跟随者', icon: '🦢', desc: '低主导、高依赖、高稳定、高务实。渴望被照顾和安排的传统年下。', yearPref: '年下' },
+    'DISF': { name: '随性依赖者', icon: '🧸', desc: '低主导、高依赖、高理想，在关系中寻求安全感和被照顾，是典型的年下。', yearPref: '年下' },
+
+    'DEPT': { name: '探索型伙伴', icon: '🗺️', desc: '低主导、高探索、高稳定，独立性一般。乐于跟随和探索新事物，是关系中的活力伙伴。', yearPref: '平衡' },
+    'DEPF': { name: '好奇宝宝', icon: '好奇', desc: '低主导、高探索、高务实，是理性驱动的好奇追随者。', yearPref: '平衡' },
+    'DEST': { name: '平衡探索家', icon: '🤝', desc: '低主导、高依赖、高探索，但偏向稳定。寻求平衡，乐于尝试但底线稳定。', yearPref: '平衡' },
+    'DESF': { name: '浪漫追随者', icon: '✨', desc: '低主导、高依赖、高探索、高理想。典型的浪漫、依赖型年下，为关系带来情感价值。', yearPref: '年下' }
 };
+// --- [V5.2 修复代码结束] ---
 
         let currentPage = 'verify';
         let currentQuestion = 0;
@@ -1664,9 +1672,11 @@ const archetypeTypes = {
             });
             
             // [V5.1] 维度平均分 (4-20分)
-            const finalScores = dimensionScores.map((score, i) => 
-                Math.round((score / dimensionCounts[i]) * 4)
-            );
+// --- [V5.2 推荐的平均分计算] ---
+// 将总分 (10-50分) 转换为平均分 (1-5分)
+const avgScores = dimensionScores.map((score, i) =>
+    Math.round((score / dimensionCounts[i]) * 10) / 10 // 保留一位小数的平均分 (1.0 - 5.0)
+);
             
             // [V5.1] 16型人格计算：计算字母代号 (阈值 30，即平均分 3.0)
             let typeCode = "";
@@ -1983,5 +1993,6 @@ const archetypeTypes = {
     </script>
 </body>
 </html>
+
 
 
