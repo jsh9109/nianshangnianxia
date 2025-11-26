@@ -1627,15 +1627,16 @@ const archetypeTypes = {
         
 function selectOption(value) {
     answers[currentQuestion] = value;
-    // 自动下一题
+    // 渲染，显示已选中的状态
+    renderQuestion(); 
+
+    // 自动下一题或完成测评
     setTimeout(() => {
         if (currentQuestion < 39) {
             nextQuestion();
         } else {
-            // --- [V5.3 修复开始] ---
-            // 如果是第40题，选中后自动触发结果计算
+            // V5.4 修复: 如果是最后一题，直接计算结果
             calculateResult();
-            // --- [V5.3 修复结束] ---
         }
     }, 200);
 }
@@ -1996,6 +1997,7 @@ function calculateResult() {
     </script>
 </body>
 </html>
+
 
 
 
