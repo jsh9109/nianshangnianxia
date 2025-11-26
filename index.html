@@ -1161,10 +1161,10 @@
                             <span id="wechatID">jsh9109</span>
                             <button onclick="copyToClipboard('jsh9109', this)">复制微信</button>
                         </div>
-                        <div class="copy-item">
-                            <span id="alipayID"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c5f5d5f5f5a5c5a5f5d2c1d1d420f0301">[email&#160;protected]</a></span>
-                            <button onclick="copyToClipboard('313360631@qq.com', this)">复制支付宝</button>
-                        </div>
+<div class="copy-item">
+    <span id="alipayID">313360631@qq.com</span>
+    <button onclick="copyToClipboard('313360631@qq.com', this)">复制支付宝</button>
+</div>
                     </div>
                 </div>
                 
@@ -1649,11 +1649,10 @@
                 // 16型人格计算：使用32作为阈值（满分50的64%，避免全选"不确定"时都是M/I/T/P）
                 // 全选"不确定"(3分)时，每维度总分=30，应该偏向D/S/E/F
                 let typeCode = "";
-                typeCode += (dimensionScores[0] >= 32) ? "M" : "D"; // 主导/追随
-                typeCode += (dimensionScores[1] >= 32) ? "I" : "S"; // 独立/依赖  
-                typeCode += (dimensionScores[2] >= 32) ? "T" : "E"; // 稳定/探索
-                typeCode += (dimensionScores[3] >= 32) ? "P" : "F"; // 务实/理想
-
+typeCode += (dimensionScores[0] >= 32) ? "M" : "D"; // 主导/追随
+typeCode += (dimensionScores[2] >= 32) ? "T" : "E"; // 稳定/探索
+typeCode += (dimensionScores[1] >= 32) ? "I" : "S"; // 独立/依赖
+typeCode += (dimensionScores[3] >= 32) ? "P" : "F"; // 务实/理想
                 console.log('计算出的类型代码:', typeCode);
                 console.log('判断逻辑: >=32为高分(M/I/T/P), <32为低分(D/S/E/F)');
                 
@@ -2021,5 +2020,6 @@ console.warn('使用默认类型:', typeCode);
     </script>
 </body>
 </html>
+
 
 
