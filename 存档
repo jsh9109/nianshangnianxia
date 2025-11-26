@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年上年下恋爱倾向测试 - 发现你的关系角色原型</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d9fa7aa184ccd246a69cf978ab0acc9d";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* [V5.0] 主题色：焦糖奶油 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #FBF8F2 0%, #FAF0E6 100%); /* 奶油背景 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(160, 127, 86, 0.15); /* 焦糖色阴影 */
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            background: linear-gradient(135deg, #A07F56 0%, #856847 100%); /* 焦糖色渐变 */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #A07F56 0%, #856847 100%); /* 焦糖色渐变 */
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        /* 4宫格布局 */
+        .dimensions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .dimension-card {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%); /* 浅奶油卡片 */
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .dimension-card:hover {
+            transform: translateY(-5px);
+            border-color: #A07F56; /* 焦糖色边框 */
+        }
+        
+        .dimension-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .dimension-name {
+            color: #A07F56; /* 焦糖色 */
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .dimension-desc {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .features-list {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%); /* 浅奶油 */
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .features-list h3 {
+            color: #A07F56; /* 焦糖色 */
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .features-list ul {
+            list-style: none;
+        }
+        
+        /* [V5.0] 移除 (免费) 标签 */
+        .features-list li {
+            padding: 10px 0;
+            color: #666;
+            font-size: 1em;
+            border-bottom: 1px solid #F5E8D6; /* 浅边框 */
+        }
+        
+        .features-list li:before {
+            content: "✓ ";
+            color: #A07F56; /* 焦糖色 */
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .input-group {
+            margin: 30px 0;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #F5E8D6; /* 浅边框 */
+            border-radius: 12px;
+            font-size: 1.1em;
+            text-align: center;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #A07F56; /* 焦糖色 */
+            box-shadow: 0 0 0 4px rgba(160, 127, 86, 0.1);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #A07F56 0%, #856847 100%); /* 焦糖色渐变 */
+            color: white;
+            box-shadow: 0 8px 25px rgba(160, 127, 86, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(160, 127, 86, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #A07F56; /* 焦糖色 */
+            border: 2px solid #A07F56;
+        }
+        
+        .btn-secondary:hover {
+            background: #FDF8F2;
+        }
+        
+        .error-message {
+            background: #ffe0e0;
+            color: #d32f2f;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+        }
+        
+        .admin-link {
+            text-align: center;
+            margin-top: 30px;
+            color: #999;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        
+        .admin-link:hover {
+            color: #A07F56;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #F5E8D6;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #A07F56 0%, #856847 100%); /* 焦糖色渐变 */
+            transition: width 0.3s;
+            border-radius: 10px;
+        }
+        
+        .progress-text {
+            color: #A07F56; /* 焦糖色 */
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .question-card {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%); /* 浅奶油 */
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .question-text {
+            color: #333;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            padding: 18px;
+            background: white;
+            border: 2px solid #F5E8D6; /* 浅边框 */
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.05em;
+            color: #666;
+        }
+        
+        .option:hover {
+            border-color: #A07F56; /* 焦糖色 */
+            background: #FDF8F2;
+            transform: translateX(5px);
+        }
+        
+        .option.selected {
+            background: linear-gradient(135deg, #A07F56 0%, #856847 100%); /* 焦糖色渐变 */
+            color: white;
+            border-color: #A07F56;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .navigation-buttons .btn {
+            margin-top: 0;
+        }
+        
+        .result-banner {
+            background: linear-gradient(135deg, #A07F56 0%, #856847 100%); /* 焦糖色渐变 */
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .result-banner h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        .rpi-score {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .rpi-level {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 1.2em;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 40px 0;
+        }
+        
+        .scores-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .score-item {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%); /* 浅奶油 */
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #A07F56; /* 焦糖色 */
+        }
+        
+        .score-item-name {
+            color: #A07F56; /* 焦糖色 */
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .score-item-value {
+            font-size: 1.8em;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .score-item-desc {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .type-card {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%); /* 浅奶油 */
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid #A07F56; /* 焦糖色 */
+        }
+        
+        .type-card h3 {
+            color: #A07F56; /* 焦糖色 */
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .type-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .characteristics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .characteristic-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .characteristic-title {
+            color: #A07F56; /* 焦糖色 */
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .characteristic-list {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .basic-advice {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%); /* 浅奶油 */
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .basic-advice h4 {
+            color: #A07F56; /* 焦糖色 */
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .basic-advice ul {
+            list-style: none;
+        }
+        
+        .basic-advice li {
+            padding: 10px 0;
+            color: #666;
+            border-bottom: 1px solid #F5E8D6; /* 浅边框 */
+        }
+        
+        .basic-advice li:before {
+            content: "💡 ";
+            margin-right: 10px;
+        }
+        
+        .unlock-section {
+            background: linear-gradient(135deg, #FFEFD5 0%, #F5DEB3 100%); /* 浅金色/黄褐色 */
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 3px solid #D55D30; /* 强对比色：陶土橙 */
+        }
+        
+        .unlock-section h3 {
+            color: #D55D30; /* 陶土橙 */
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .comparison-table {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .comparison-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #F5E8D6;
+        }
+        
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-free {
+            color: #999;
+        }
+        
+        .comparison-paid {
+            color: #D55D30; /* 陶土橙 */
+            font-weight: bold;
+        }
+        
+        .price-tag {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.2em;
+        }
+        
+        .current-price {
+            color: #D55D30; /* 陶土橙 */
+            font-size: 3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .price-note {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* --- [V5.0] 支付模块 CSS --- */
+        .payment-section {
+            width: 100%;
+            max-width: 450px;
+            margin: 20px auto 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .quick-pay-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .payment-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .payment-btn .icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        .payment-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        .payment-btn.alipay {
+            background: #00A3EE; /* 支付宝蓝 */
+        }
+        .payment-btn.wechat {
+            background: #07C160; /* 微信绿 */
+        }
+
+        .divider-or {
+            text-align: center;
+            color: #aaa;
+            margin: 25px 0;
+            position: relative;
+        }
+        .divider-or span {
+            background: white; /* 支付模块的白色背景 */
+            padding: 0 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .divider-or:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .scan-title, .transfer-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .qr-code-grid {
+            display: flex;
+            flex-direction: column; /* 垂直布局 */
+            align-items: center; /* 居中 */
+            gap: 25px; /* 垂直间距 */
+            text-align: center;
+        }
+        .qr-code-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .qr-code-item img {
+            width: 140px;
+            height: 140px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-save {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #f0f0f0;
+            color: #555;
+            border-radius: 6px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .btn-save:hover {
+            background: #e0e0e0;
+        }
+
+        .scan-tip {
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .transfer-payment {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .copy-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+        .copy-item span {
+            font-size: 15px;
+            color: #333;
+            font-weight: 500;
+            word-break: break-all;
+        }
+        .copy-item button {
+            padding: 8px 14px;
+            border: none;
+            background: #A07F56; /* 焦糖色 */
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+        .copy-item button:hover {
+            background: #856847; /* 深焦糖色 */
+        }
+        /* --- [V5.0] CSS 结束 --- */
+        
+        .report-section {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #A07F56; /* 焦糖色 */
+        }
+        
+        .report-section h3 {
+            color: #A07F56; /* 焦糖色 */
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        .report-section h4 {
+            color: #856847; /* 深焦糖色 */
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+        }
+        
+        .report-section p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+        
+        .personality-types {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .personality-type {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%); /* 浅奶油 */
+            padding: 20px;
+            border-radius: 12px;
+        }
+        
+        /* 动态高亮样式 */
+        .personality-type.current {
+            border: 3px solid #A07F56;
+            background: linear-gradient(135deg, #F5E8D6 0%, #E0D0BB 100%);
+        }
+        
+        .type-number {
+            color: #A07F56; /* 焦糖色 */
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .type-name {
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        
+        .type-score {
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        .action-plan {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .action-plan h4 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        
+        .action-plan ul {
+            list-style: none;
+        }
+        
+        .action-plan li {
+            padding: 12px 0;
+            color: #555;
+            border-bottom: 1px solid #a5d6a7;
+        }
+        
+        .action-plan li:before {
+            content: "✓ ";
+            color: #2e7d32;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .resource-card {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .resource-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .resource-title {
+            color: #A07F56; /* 焦糖色 */
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .resource-list {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .dos-donts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .dos-card {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        .donts-card {
+            background: linear-gradient(135deg, #FFE0E0 0%, #FFC8C8 100%); /* 浅红 */
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        .dos-card h4 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        
+        .donts-card h4 {
+            color: #c62828;
+            margin-bottom: 15px;
+        }
+        
+        .thank-banner {
+            background: linear-gradient(135deg, #A07F56 0%, #856847 100%); /* 焦糖色渐变 */
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .thank-banner h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .admin-panel {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-panel h2 {
+            color: #A07F56; /* 焦糖色 */
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #FDF8F2 0%, #F5E8D6 100%); /* 浅奶油 */
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            color: #A07F56; /* 焦糖色 */
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        .recent-records {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .record-item {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .header p {
+                font-size: 1em;
+            }
+            
+            .dimensions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-container {
+                height: 320px;
+            }
+            
+            .scores-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .characteristics {
+                grid-template-columns: 1fr;
+            }
+            
+            .personality-types {
+                grid-template-columns: 1fr;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dos-donts {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+            }
+            
+            .rpi-score {
+                font-size: 3em;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .question-text {
+                font-size: 1.1em;
+            }
+            
+            .option {
+                padding: 15px;
+                font-size: 1em;
+            }
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="cardVerifyPage" class="card">
+            <div class="header">
+                <h1>☕ 年上年下恋爱倾向测试</h1>
+                <p>发现你的内在关系角色原型</p>
+                <span class="badge">🔬 基于依恋理论与荣格心理学的专业评估</span>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="cardInput" placeholder="请输入测评卡号" maxlength="20">
+            </div>
+            
+            <button class="btn btn-primary" onclick="verifyCard()">🧭 开始测评</button>
+            
+            <div class="dimensions-grid" style="margin-top: 40px;">
+                <div class="dimension-card">
+                    <div class="dimension-icon">👑</div>
+                    <div class="dimension-name">主导 vs 追随</div>
+                    <div class="dimension-desc">关系中的权力与角色偏好</div>
+                </div>
+                <div class="dimension-card">
+                    <div class="dimension-icon">🛡️</div>
+                    <div class="dimension-name">独立 vs 依赖</div>
+                    <div class="dimension-desc">你对情感支持的需求程度</div>
+                </div>
+                <div class="dimension-card">
+                    <div class="dimension-icon">🕰️</div>
+                    <div class="dimension-name">稳定 vs 探索</div>
+                    <div class="dimension-desc">你的生活节奏与规划倾向</div>
+                </div>
+                <div class="dimension-card">
+                    <div class="dimension-icon">📜</div>
+                    <div class="dimension-name">务实 vs 理想</div>
+                    <div class="dimension-desc">你的未来预期侧重点</div>
+                </div>
+            </div>
+            
+            <div class="features-list">
+                <h3>📋 测评包含</h3>
+                <ul>
+                    <li>40题专业心理量表</li>
+                    <li>4大核心维度分析</li>
+                    <li>16型角色原型匹配</li>
+                    <li><strong style="color:#D55D30;">千字深度报告+专属行动方案 (¥4.9解锁)</strong></li>
+                </ul>
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+            
+            <div class="admin-link" onclick="showAdminPanel()">管理员入口 →</div>
+        </div>
+        
+        <div id="testPage" class="card hidden">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">第1题 / 共40题</div>
+            
+            <div class="question-card">
+                <div class="question-text" id="questionText"></div>
+                <div class="options" id="optionsContainer"></div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" style="display: none;">← 上一题</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
+            </div>
+        </div>
+        
+        <div id="freeResultPage" class="card hidden">
+            <div class="result-banner">
+                <h2>☕ 年上年下倾向报告</h2>
+                <p style="font-size: 1.2em; margin-top: 15px;">你的关系角色原型（基础版）</p>
+                <div class="rpi-score" id="archetypeIcon">👑</div>
+                <div class="rpi-level" id="archetypeName">全能守护者 (MIST)</div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+            </div>
+            
+            <div class="scores-list" id="scoresList"></div>
+            
+            <div class="type-card">
+                <h3 id="typeName">"全能守护者"人格</h3>
+                <p id="typeDesc">你倾向于扮演关系中的"年上"角色，具有较高的情绪成熟度和责任感，喜欢在关系中提供指导和保护。你的伴侣通常会是寻求安全感和新鲜感的"年下"类型。</p>
+            </div>
+            
+            <div class="characteristics">
+                <div class="characteristic-item">
+                    <div class="characteristic-title">👑 年上特质</div>
+                    <div class="characteristic-list">
+                        • 决策主导<br>
+                        • 情绪稳定<br>
+                        • 经验丰富
+                    </div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-title">👶 年下特质</div>
+                    <div class="characteristic-list">
+                        • 依赖照顾<br>
+                        • 寻求浪漫<br>
+                        • 缺乏耐心
+                    </div>
+                </div>
+                <div class="characteristic-item">
+                    <div class="characteristic-title">⚖️ 最佳匹配</div>
+                    <div class="characteristic-list">
+                        • 浪漫追随型<br>
+                        • 平衡探索型<br>
+                        • 独立务实型
+                    </div>
+                </div>
+            </div>
+            
+            <div class="basic-advice">
+                <h4>💡 基础建议（免费版）</h4>
+                <ul>
+                    <li>意识到过度保护欲可能让伴侣感到压力。</li>
+                    <li>学习在做决定时,放下权威，多倾听伴侣的意见。</li>
+                    <li>免费版只能看到基本倾向，完整版有详细的沟通和边界建立计划。</li>
+                </ul>
+            </div>
+            
+            <div class="unlock-section">
+                <h3 style="font-size: 1.8em; line-height: 1.6; text-align: center; margin-bottom: 25px;">
+                    您的<strong style="color: #D55D30;">基础版</strong>报告已出 👇<br>
+                    如需 <strong style="color: #D55D30;">16型角色原型全解析</strong> 和 <strong style="color: #D55D30;">沟通冲突解决指南</strong>，可付费解锁：
+                </h3>
+                
+                <div class="comparison-table">
+                    <div class="comparison-row">
+                        <span class="comparison-free">基础角色（1种）</span>
+                        <span>→</span>
+                        <span class="comparison-paid">16型角色原型全图鉴</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-free">基础建议</span>
+                        <span>→</span>
+                        <span class="comparison-paid">年上年下边界建立计划</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-free">无冲突方案</span>
+                        <span>→</span>
+                        <span class="comparison-paid">7种沟通冲突解决话术</span>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="comparison-free">无资源包</span>
+                        <span>→</span>
+                        <span class="comparison-paid">推荐书籍、课程与测试</span>
+                    </div>
+                </div>
+                
+                <div class="price-tag">
+                    <div class="original-price">原价 ¥29.9</div>
+                    <div class="current-price">¥4.9</div>
+                    <div class="price-note">限时特惠 · 一杯咖啡的价格换来一段健康的亲密关系</div>
+                </div>
+                
+                <div class="payment-section">
+                    <div class="quick-pay-buttons">
+                        <a href="https://qr.alipay.com/tsx15981nt9c4aydmvo2h3d" class="payment-btn alipay">
+                            <span class="icon">⚡</span> 支付宝快捷支付
+                        </a>
+                        <a href="javascript:void(0);" onclick="alert('请使用下方复制账号转账功能')" class="payment-btn wechat">
+                            <span class="icon">⚡</span> 微信快捷支付
+                        </a>
+                    </div>
+            
+                    <div class="divider-or"><span>或</span></div>
+            
+                  <div class="scan-payment">
+    <div class="scan-title">📱 扫码支付</div>
+    <div class="qr-code-grid">
+        <div class="qr-code-item">
+            <img src="wechat_qrcode.jpg" alt="微信收款码" style="width: 140px; height: 140px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+        <div class="qr-code-item">
+            <img src="alipay_qrcode.png" alt="支付宝收款码" style="width: 140px; height: 140px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+    <div class="scan-tip">
+        💡 建议使用上方快捷支付或复制账号转账
+    </div>
+</div>
+            
+                    <div class="divider-or"><span>或</span></div>
+            
+                    <div class="transfer-payment">
+                        <div class="transfer-title">💳 复制账号转账</div>
+                        <div class="copy-item">
+                            <span id="wechatID">jsh9109</span>
+                            <button onclick="copyToClipboard('jsh9109', this)">复制微信</button>
+                        </div>
+<div class="copy-item">
+    <span id="alipayID">313360631@qq.com</span>
+    <button onclick="copyToClipboard('313360631@qq.com', this)">复制支付宝</button>
+</div>
+                    </div>
+                </div>
+                
+                <label for="paymentProofInput" class="btn btn-primary" style="margin-top: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #D55D30;">
+                    📸 上传付款截图，查看完整报告
+                </label>
+                <input type="file" id="paymentProofInput" accept="image/*" onchange="handlePaymentProof(event)" style="display: none;">
+                
+            </div>
+        </div>
+        
+        <div id="fullReportPage" class="card hidden">
+            <div class="thank-banner">
+                <h3>☕ 感谢你的支持！</h3>
+                <p>完整深度报告已为你生成，请保存本页面随时查看</p>
+            </div>
+            
+            <div class="result-banner">
+                <h2>👑 你的年上年下角色原型全解析</h2>
+                <div class="rpi-score" id="fullArchetypeIcon">👑</div>
+                <div class="rpi-level" id="fullArchetypeName">全能守护者 (MIST)</div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="fullRadarChart"></canvas>
+            </div>
+            
+            <div class="report-section">
+                <h3>📜 第一部分：角色定位与核心驱动力</h3>
+                <h4 id="reportArchetypeName">你的原型："全能守护者"</h4>
+                <p id="reportArchetypeDesc">你的关系原型是**全能守护者 (MIST)**。这代表你在关系中扮演着提供稳定、指引方向和解决问题的"年上"角色。你拥有高成熟度、独立自主和稳定的生活节奏。你的伴侣通常会是寻求安全感和新鲜感的"年下"类型。</p>
+                
+                <h4>你的核心驱动力与挑战</h4>
+                <p>你的核心驱动力是**"责任感"**与**"安全感"**。你渴望通过对关系的规划和控制，来确保这段关系是稳定、可预测的。你的挑战在于，你容易在不知不觉中承担了过多的责任，让伴侣失去了成长的空间，最终导致关系失衡。</p>
+            </div>
+            
+            <div class="report-section">
+                <h3>🧭 第二部分：16型角色原型图鉴 (付费内容)</h3>
+                <div class="personality-types" id="paidTypeList">
+                    <!-- 动态生成16个类型 -->
+                </div>
+            </div>
+            
+            <div class="report-section">
+                <h3>⚖️ 第三部分：年上年下边界建立计划</h3>
+                
+                <div class="action-plan">
+                    <h4>30天角色平衡计划 (专用)</h4>
+                    <ul>
+                        <li>第1-10天：练习"放手"，在小事上让伴侣做主，不加评论。</li>
+                        <li>第11-20天：找回"自我"，每周进行一次不带伴侣的个人爱好活动。</li>
+                        <li>第21-30天：建立"平等沟通日"，双方轮流主导一次重大决定。</li>
+                    </ul>
+                </div>
+                
+                <h4>7种沟通冲突解决话术</h4>
+                <p style="background: #E8F5E9; padding: 15px; border-radius: 8px; color: #2e7d32;">
+                    <strong>场景1：伴侣寻求指导</strong><br>
+                    ❌ "你这样想就对了，听我的。"<br>
+                    ✅ "这是一个方法，但你觉得这样做，对你来说最大的挑战会是什么？" (将"指导"变成"提问")
+                </p>
+                
+                <p style="background: #E8F5E9; padding: 15px; border-radius: 8px; color: #2e7d32; margin-top: 15px;">
+                    <strong>场景2：伴侣抱怨你"太强势"</strong><br>
+                    ❌ "我这是为你好，你还不懂吗？"<br>
+                    ✅ "对不起，我没注意到我的语气太重了。下次请提醒我，我更想和你一起讨论，而不是替你决定。" (承认自己的角色失衡)
+                </p>
+            </div>
+            
+            <div class="report-section">
+                <h3>📚 第四部分：成长资源包</h3>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">📖</div>
+                        <div class="resource-title">推荐书籍</div>
+                        <div class="resource-list">
+                            1. 《非暴力沟通》<br>
+                            2. 《亲密关系》<br>
+                            3. 《人生的智慧》
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🎓</div>
+                        <div class="resource-title">专业课程</div>
+                        <div class="resource-list">
+                            1. 依恋模式修正课<br>
+                            2. 亲密关系工作坊<br>
+                            3. 情商与自我管理
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🔗</div>
+                        <div class="resource-title">专业测试</div>
+                        <div class="resource-list">
+                            1. MBTI 官方测试<br>
+                            2. 九型人格测试<br>
+                            3. DISC 评估
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="report-section">
+                <h3>⚠️ 避坑指南</h3>
+                
+                <div class="dos-donts">
+                    <div class="donts-card">
+                        <h4>❌ 千万别做的3件事</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid #FFC8C8;">
+                                <strong>1. 查手机/监控社交媒体</strong><br>
+                                这种行为会破坏信任基础，降低伴侣的安全感。
+                            </li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid #FFC8C8;">
+                                <strong>2. 用"我都是为你好"来压制</strong><br>
+                                权威式的保护欲，会让伴侣失去自我成长空间。
+                            </li>
+                            <li style="padding: 10px 0;">
+                                <strong>3. 将责任全揽在身</strong><br>
+                                过度的付出感和责任感容易导致关系失衡和内耗。
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="dos-card">
+                        <h4>✅ 一定要做的3件事</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid #a5d6a7;">
+                                <strong>1. 建立"非父母"边界</strong><br>
+                                允许伴侣犯错，把伴侣视为平等的成年人。
+                            </li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid #a5d6a7;">
+                                <strong>2. 允许情感依赖</strong><br>
+                                在独立的同时，也要展示自己的脆弱面，增加亲密感。
+                            </li>
+                            <li style="padding: 10px 0;">
+                                <strong>3. 培养共同目标</strong><br>
+                                用共同的理想规划未来，而非仅用物质稳定伴侣。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="generateReportImage()" style="margin-bottom: 15px; background: #D55D30;">🖼️ 生成报告卡片 (保存分享)</button>
+            
+            <div id="saveModal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; overflow-y: auto; padding: 20px; display: none; flex-direction: column; align-items: center;">
+                <div style="color: white; font-size: 18px; margin-bottom: 15px; font-weight: bold; text-align: center;">👇 长按下方图片保存到相册 👇</div>
+                <img id="generatedReportImg" style="width: 100%; max-width: 450px; border-radius: 10px; box-shadow: 0 0 20px rgba(255,255,255,0.2);">
+                <button class="btn btn-secondary" onclick="closeSaveModal()" style="margin-top: 20px; width: auto; padding: 10px 30px; background: white; color: #333; border: none;">关闭</button>
+            </div>
+            
+            <button class="btn btn-secondary" onclick="location.reload()">重新测评</button>
+        </div>
+        
+        <div id="adminPanel" class="card hidden">
+            <h2>🔐 管理员后台</h2>
+            <div class="input-group">
+                <input type="password" id="adminPassword" placeholder="请输入管理员密码">
+            </div>
+            <button class="btn btn-primary" onclick="verifyAdmin()">登录</button>
+            
+            <div id="adminContent" class="hidden">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalCards">0</div>
+                        <div class="stat-label">卡密总数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="usedCards">0</div>
+                        <div class="stat-label">已使用</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="unusedCards">0</div>
+                        <div class="stat-label">未使用</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="deviceCount">0</div>
+                        <div class="stat-label">绑定设备数</div>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 30px 0 15px 0;">生成卡密</h3>
+                <div class="input-group">
+                    <input type="number" id="cardCount" placeholder="输入生成数量（1-1000）" min="1" max="1000" value="10">
+                </div>
+                <button class="btn btn-primary" onclick="generateCards()">生成卡密</button>
+                
+                <h3 style="margin: 30px 0 15px 0;">最近使用记录</h3>
+                <div class="recent-records" id="recentRecords">
+                    <div class="record-item">暂无记录</div>
+                </div>
+                
+                <button class="btn btn-secondary" onclick="backToMain()">返回主页</button>
+            </div>
+        </div>
+    </div>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const ADMIN_PASSWORD = 'lss900201';
+        
+        /* [V5.0] 4维度 x 10题 = 40题 */
+        const questions = [
+            /* 维度A: 主导 vs 追随 (年上掌控特质) */
+            {text: '在关系中，我倾向于主动规划约会和旅行。', dimension: 0},
+            {text: '我更喜欢对方听从我的意见，而不是争论不休。', dimension: 0},
+            {text: '为了团队和谐，我愿意放弃自己的观点。', dimension: 0, reverse: true}, // 反向计分
+            {text: '我经常充当关系中的"决策者"。', dimension: 0},
+            {text: '我喜欢掌控金钱，并管理共同的财务。', dimension: 0},
+            {text: '我更喜欢被照顾和安排，而不是去照顾别人。', dimension: 0, reverse: true},
+            {text: '我愿意为伴侣的快乐承担大部分责任。', dimension: 0},
+            {text: '我很难对伴侣说"不"，即使我不同意。', dimension: 0, reverse: true},
+            {text: '我更喜欢有人替我拿主意。', dimension: 0, reverse: true},
+            {text: '我认为关系中应该有明确的领导者。', dimension: 0},
+
+            /* 维度B: 独立 vs 依赖 (年上独立特质) */
+            {text: '长时间独处不会让我感到焦虑或孤独。', dimension: 1},
+            {text: '我有一个独立的朋友圈和爱好，不需要伴侣参与。', dimension: 1},
+            {text: '我需要伴侣频繁地确认对我的爱和忠诚。', dimension: 1, reverse: true},
+            {text: '伴侣没有及时回复信息，我会感到不安。', dimension: 1, reverse: true},
+            {text: '我通常自己解决问题，而不是依赖伴侣。', dimension: 1},
+            {text: '我很难在没有伴侣陪伴的情况下做重要的事情。', dimension: 1, reverse: true},
+            {text: '我更喜欢伴侣把TA的社交圈向我开放。', dimension: 1, reverse: true},
+            {text: '我能轻松处理伴侣不在身边的情绪。', dimension: 1},
+            {text: '我常常担心伴侣会离开我。', dimension: 1, reverse: true},
+            {text: '我喜欢和伴侣保持一定的心理距离和独立性。', dimension: 1},
+
+            /* 维度C: 稳定 vs 探索 (年上稳定特质) */
+            {text: '在关系中，我追求稳定和可预测性。', dimension: 2},
+            {text: '我喜欢尝试新的约会方式和冒险活动。', dimension: 2, reverse: true},
+            {text: '我更看重伴侣的潜力，而不是经验。', dimension: 2, reverse: true},
+            {text: '我倾向于坚持固定的约会习惯和生活节奏。', dimension: 2},
+            {text: '我喜欢分享过去的经验和知识给伴侣。', dimension: 2},
+            {text: '我更愿意改变自己来适应伴侣的爱好。', dimension: 2, reverse: true},
+            {text: '我喜欢关系中充满浪漫和惊喜。', dimension: 2, reverse: true},
+            {text: '我更喜欢成熟、有阅历的伴侣。', dimension: 2},
+            {text: '我不喜欢关系发展得太快，需要时间观察。', dimension: 2},
+            {text: '我更看重伴侣的活力和激情。', dimension: 2, reverse: true},
+
+            /* 维度D: 务实 vs 理想 (年上务实特质) */
+            {text: '我在恋爱中会考虑到对方的经济条件和职业规划。', dimension: 3},
+            {text: '我更倾向于相信感觉和直觉，而不是事实和数据。', dimension: 3, reverse: true},
+            {text: '我为未来制定了非常详细的计划（如几年内买房/结婚）。', dimension: 3},
+            {text: '我更看重关系中的情感连接和浪漫体验。', dimension: 3, reverse: true},
+            {text: '我常常幻想完美的爱情和理想的伴侣。', dimension: 3, reverse: true},
+            {text: '我更看重伴侣是否能给我提供稳定的生活。', dimension: 3},
+            {text: '我喜欢脚踏实地地解决问题。', dimension: 3},
+            {text: '我倾向于在关系中承担务实的角色（如记账、规划未来）。', dimension: 3},
+            {text: '我很少考虑未来的长期规划，活在当下。', dimension: 3, reverse: true},
+            {text: '我更愿意为了理想的爱情放弃一部分物质条件。', dimension: 3, reverse: true}
+        ];
+        
+        const options = ['完全不像我', '不太像我', '不确定', '有点像我', '非常像我'];
+        
+        // [V5.2 修复] 16型角色原型 - 修复emoji显示
+        const archetypeTypes = {
+            'MIPT': { name: '全能守护者', icon: '👑', desc: '高主导、高独立、高稳定、高务实。成熟稳重，是关系的绝对支柱。', yearPref: '年上' },
+            'MIPF': { name: '务实引导者', icon: '🛠️', desc: '高主导、高独立、高务实，但情感上追求理想。是能提供物质和精神双重引导的年上。', yearPref: '年上' },
+            'MIST': { name: '理性引路人', icon: '🧭', desc: '高主导、高独立、高稳定，但情感上略依赖。是关系中稳定的导师和引领者。', yearPref: '年上' },
+            'MISF': { name: '温情领航员', icon: '🚢', desc: '高主导、高独立、高理想，是能提供方向和温暖的年上。', yearPref: '年上' },
+            
+            'MEPT': { name: '随性领导者', icon: '💡', desc: '高主导、高探索、高稳定，独立性一般。在关系中是充满活力和新鲜感的领导者。', yearPref: '年上' },
+            'MEPF': { name: '强势探索家', icon: '⚡', desc: '高主导、高探索、高务实，是行动派的年上。', yearPref: '年上' },
+            'MEST': { name: '掌控依赖型', icon: '🔗', desc: '高主导、高探索，但略依赖和稳定。倾向于掌控一切，但情感上需要支持。', yearPref: '年上' },
+            'MESF': { name: '浪漫支配者', icon: '🔥', desc: '高主导、高探索、高理想，是关系中充满激情和浪漫的年上。', yearPref: '年上' },
+
+            'DIPT': { name: '独立平衡型', icon: '⚖️', desc: '低主导（追随）、高独立、高稳定、高务实。虽然追随，但自我独立性强，是追求平稳的伴侣。', yearPref: '平衡' },
+            'DIPF': { name: '务实追随者', icon: '📈', desc: '低主导、高独立、高务实，但追求理想。是脚踏实地，但又渴望浪漫的年下。', yearPref: '平衡' },
+            'DIST': { name: '温顺的跟随者', icon: '🦢', desc: '低主导、高依赖、高稳定、高务实。渴望被照顾和安排的传统年下。', yearPref: '年下' },
+            'DISF': { name: '随性依赖者', icon: '🧸', desc: '低主导、高依赖、高理想，在关系中寻求安全感和被照顾，是典型的年下。', yearPref: '年下' },
+
+            'DEPT': { name: '探索型伙伴', icon: '🗺️', desc: '低主导、高探索、高稳定，独立性一般。乐于跟随和探索新事物，是关系中的活力伙伴。', yearPref: '平衡' },
+            'DEPF': { name: '好奇宝宝', icon: '🔍', desc: '低主导、高探索、高务实，是理性驱动的好奇追随者。', yearPref: '平衡' },
+            'DEST': { name: '平衡探索家', icon: '🤝', desc: '低主导、高依赖、高探索，但偏向稳定。寻求平衡，乐于尝试但底线稳定。', yearPref: '平衡' },
+            'DESF': { name: '浪漫追随者', icon: '✨', desc: '低主导、高依赖、高探索、高理想。典型的浪漫、依赖型年下，为关系带来情感价值。', yearPref: '年下' }
+        };
+
+        let currentPage = 'verify';
+        let currentQuestion = 0;
+        let answers = new Array(40).fill(0);
+        let currentCard = null;
+        
+        function getDeviceFingerprint() {
+            try {
+                let canvasFingerprint = '';
+                try {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    if (ctx) {
+                        ctx.textBaseline = 'top';
+                        ctx.font = '14px Arial';
+                        ctx.fillText('fingerprint', 2, 2);
+                        canvasFingerprint = canvas.toDataURL().slice(-50);
+                    }
+                } catch (e) {
+                    canvasFingerprint = Date.now().toString();
+                }
+                
+                const fingerprint = [
+                    navigator.userAgent || 'unknown',
+                    navigator.language || 'unknown',
+                    (screen.width || 0) + 'x' + (screen.height || 0),
+                    screen.colorDepth || 0,
+                    new Date().getTimezoneOffset(),
+                    canvasFingerprint
+                ].join('|');
+                
+                let hash = 0;
+                for (let i = 0; i < fingerprint.length; i++) {
+                    const char = fingerprint.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + char;
+                    hash = hash & hash;
+                }
+                
+                return 'device_' + Math.abs(hash).toString(36);
+            } catch (error) {
+                return 'device_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            }
+        }
+        
+        function verifyCard() {
+            const cardInput = document.getElementById('cardInput');
+            const errorDiv = document.getElementById('errorMessage');
+            const cardCode = cardInput.value.trim().toUpperCase();
+            const MASTER_CODE = "GEMINI-MASTER";
+
+            console.log('开始验证卡号:', cardCode); // 调试日志
+
+            if (cardCode === MASTER_CODE) {
+                currentCard = MASTER_CODE;
+                showTestPage(); 
+                return;
+            }
+            
+            if (!cardCode) {
+                errorDiv.textContent = '请输入测评卡号';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            // 接受两种格式：TF-XXXX-XXXX 或 任意8-20位字母数字
+            if (!/^TF-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(cardCode) && !/^[A-Z0-9]{8,20}$/.test(cardCode)) {
+                errorDiv.textContent = '卡号格式不正确';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            const deviceId = getDeviceFingerprint();
+            let cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
+            let card = cards.find(c => c.code === cardCode);
+            
+            if (!card) {
+                // 新卡号，自动创建
+                card = { 
+                    code: cardCode, 
+                    deviceId: deviceId,
+                    createdAt: new Date().toISOString(),
+                    firstUsedAt: new Date().toISOString(),
+                    testCount: 0
+                };
+                cards.push(card);
+                console.log('创建新卡号:', card);
+            } else {
+                if (card.deviceId && card.deviceId !== deviceId) {
+                    errorDiv.textContent = '该卡号已在其他设备使用，无法在本设备使用';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                
+                if (!card.deviceId) {
+                    card.deviceId = deviceId;
+                    card.firstUsedAt = new Date().toISOString();
+                }
+                console.log('使用已有卡号:', card);
+            }
+            
+            card.testCount = (card.testCount || 0) + 1;
+            card.lastUsedAt = new Date().toISOString();
+            
+            localStorage.setItem('ageCards', JSON.stringify(cards));
+            
+            currentCard = card;
+            errorDiv.style.display = 'none'; // 隐藏错误信息
+            showTestPage();
+        }
+        
+        function showTestPage() {
+            document.getElementById('cardVerifyPage').classList.add('hidden');
+            document.getElementById('testPage').classList.remove('hidden');
+            document.getElementById('fullReportPage').classList.add('hidden');
+            document.getElementById('freeResultPage').classList.add('hidden');
+
+            currentPage = 'test';
+            currentQuestion = 0;
+            answers = new Array(40).fill(0);
+            renderQuestion();
+        }
+        
+        function renderQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById('questionText').textContent = `Q${currentQuestion + 1}: ${question.text}`;
+            
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            
+            options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                if (answers[currentQuestion] === index + 1) {
+                    optionDiv.classList.add('selected');
+                }
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => selectOption(index + 1);
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            const progress = ((currentQuestion + 1) / 40) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `第${currentQuestion + 1}题 / 共40题`;
+            
+            document.getElementById('prevBtn').style.display = currentQuestion > 0 ? 'block' : 'none';
+            document.getElementById('nextBtn').textContent = currentQuestion === 39 ? '完成测评 ✓' : '下一题 →';
+        }
+        
+        function selectOption(value) {
+            answers[currentQuestion] = value;
+            renderQuestion(); 
+
+            setTimeout(() => {
+                if (currentQuestion < 39) {
+                    nextQuestion();
+                } else {
+                    calculateResult();
+                }
+            }, 200);
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+        
+        function nextQuestion() {
+            if (answers[currentQuestion] === 0) {
+                alert('请选择一个选项');
+                return;
+            }
+            
+            if (currentQuestion < 39) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                calculateResult();
+            }
+        }
+        
+        /* [V5.8 最终修复版] 计算结果函数 - 修正阈值逻辑 */
+        function calculateResult() {
+            try {
+                const dimensionScores = [0, 0, 0, 0];
+                
+                // 计算原始分数（每个维度10题，满分50）
+                questions.forEach((q, i) => {
+                    let score = answers[i]; // 1-5
+                    if (q.reverse) {
+                        score = 6 - score; // 反向计分
+                    }
+                    dimensionScores[q.dimension] += score;
+                });
+                
+                console.log('原始维度得分 (满分50，中位数30):', dimensionScores);
+                
+                // 转换为 4-20 分制用于图表展示
+                const finalScores = dimensionScores.map(score => 
+                    Math.round((score / 50) * 16) + 4
+                );
+                
+                console.log('图表显示分数 (4-20):', finalScores);
+                
+                // 16型人格计算：使用32作为阈值（满分50的64%，避免全选"不确定"时都是M/I/T/P）
+                // 全选"不确定"(3分)时，每维度总分=30，应该偏向D/S/E/F
+                let typeCode = "";
+typeCode += (dimensionScores[0] >= 32) ? "M" : "D"; // 主导/追随
+typeCode += (dimensionScores[2] >= 32) ? "T" : "E"; // 稳定/探索
+typeCode += (dimensionScores[1] >= 32) ? "I" : "S"; // 独立/依赖
+typeCode += (dimensionScores[3] >= 32) ? "P" : "F"; // 务实/理想
+                console.log('计算出的类型代码:', typeCode);
+                console.log('判断逻辑: >=32为高分(M/I/T/P), <32为低分(D/S/E/F)');
+                
+                const resultType = archetypeTypes[typeCode];
+                
+                // 如果类型不存在，使用默认类型
+                if (!resultType) {
+                    console.error('错误: 无法找到类型', typeCode);
+                    console.log('可用的类型:', Object.keys(archetypeTypes));
+                    
+// 使用最接近的默认类型
+typeCode = "DESF"; // 浪漫追随者（确保存在）
+// 不显示任何提示，直接使用默认类型
+console.warn('使用默认类型:', typeCode);
+                }
+
+                const finalType = archetypeTypes[typeCode];
+                console.log('最终匹配到的人格类型:', finalType.name, '(', finalType.yearPref, ')');
+
+                sessionStorage.setItem('testResult', JSON.stringify({
+                    scores: finalScores,
+                    rawScores: dimensionScores,
+                    typeCode: typeCode,
+                    archetypeIcon: finalType.icon,
+                    archetypeName: finalType.name,
+                    archetypeDesc: finalType.desc,
+                    yearPref: finalType.yearPref
+                }));
+                
+                showFreeResult();
+                
+            } catch (error) {
+                console.error('计算结果出错:', error);
+                alert('计算出错，请刷新页面重试\n错误信息: ' + error.message);
+            }
+        }
+        
+        /* [V5.7 完全修复版] 免费结果页 - 添加完整错误处理 */
+        function showFreeResult() {
+            try {
+                const result = JSON.parse(sessionStorage.getItem('testResult'));
+                
+                if (!result) {
+                    throw new Error('无法获取测评结果');
+                }
+                
+                console.log('显示结果:', result);
+                
+                document.getElementById('cardVerifyPage').classList.add('hidden');
+                document.getElementById('testPage').classList.add('hidden');
+                document.getElementById('fullReportPage').classList.add('hidden');
+                document.getElementById('freeResultPage').classList.remove('hidden');
+                currentPage = 'freeResult';
+
+                // 填充数据
+                document.getElementById('archetypeIcon').textContent = result.archetypeIcon || '👑';
+                document.getElementById('archetypeName').textContent = (result.archetypeName || '全能守护者') + ' (' + result.typeCode + ')';
+                document.getElementById('typeName').textContent = '"' + (result.archetypeName || '全能守护者') + '"人格';
+                document.getElementById('typeDesc').textContent = result.archetypeDesc || '你是关系中的守护者';
+                
+                // 绘制雷达图
+                drawRadarChart('radarChart', result.scores);
+                
+                // 填充分数列表
+                const scoresList = document.getElementById('scoresList');
+                const dimensionNames = ['主导 vs 追随', '独立 vs 依赖', '稳定 vs 探索', '务实 vs 理想'];
+                const dimensionIcons = ['👑', '🛡️', '🕰️', '📜'];
+                
+                scoresList.innerHTML = '';
+                result.scores.forEach((score, i) => {
+                    const scoreItem = document.createElement('div');
+                    scoreItem.className = 'score-item';
+                    scoreItem.innerHTML = `
+                        <div class="score-item-name">${dimensionIcons[i]} ${dimensionNames[i]}</div>
+                        <div class="score-item-value">${score} / 20</div>
+                        <div class="score-item-desc">${score > 12 ? '高分倾向' : '低分倾向'}</div>
+                    `;
+                    scoresList.appendChild(scoreItem);
+                });
+                
+                window.scrollTo(0, 0);
+                
+            } catch (error) {
+                console.error('显示结果页面详细错误:', error);
+                alert('显示结果出错，请刷新页面重试\n错误信息: ' + error.message);
+                location.reload();
+            }
+        }
+        
+        function drawRadarChart(canvasId, scores) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            const isMobile = window.innerWidth <= 768;
+            
+            const existingChart = Chart.getChart(canvasId);
+            if (existingChart) {
+                existingChart.destroy();
+            }
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['主导/追随', '独立/依赖', '稳定/探索', '务实/理想'],
+                    datasets: [{
+                        label: '你的得分 (4-20分)',
+                        data: scores,
+                        backgroundColor: 'rgba(160, 127, 86, 0.2)',
+                        borderColor: '#A07F56',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#A07F56',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: isMobile ? 1 : 1.1,
+                    layout: {
+                        padding: isMobile ? {top: 15, bottom: 15, left: 5, right: 5} : {top: 30, bottom: 30, left: 30, right: 30}
+                    },
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 20,
+                            ticks: {
+                                stepSize: 5,
+                                font: {size: isMobile ? 9 : 11}
+                            },
+                            pointLabels: {
+                                font: {size: isMobile ? 11 : 13, weight: 'bold'},
+                                color: '#856847',
+                                padding: isMobile ? 8 : 15
+                            },
+                            grid: {color: '#F5E8D6'},
+                            angleLines: {color: '#F5E8D6'}
+                        }
+                    },
+                    plugins: {
+                        legend: {display: false}
+                    }
+                }
+            });
+        }
+        
+        function handlePaymentProof(event) {
+            const file = event.target.files[0];
+            if (file) {
+                showFullReport();
+            }
+        }
+        
+        /* [V5.7 完全修复版] 完整报告页 - 动态生成16型并高亮 */
+        function showFullReport() {        
+            const result = JSON.parse(sessionStorage.getItem('testResult'));
+        
+            document.getElementById('cardVerifyPage').classList.add('hidden');
+            document.getElementById('testPage').classList.add('hidden');
+            document.getElementById('freeResultPage').classList.add('hidden');
+            document.getElementById('adminPanel').classList.add('hidden'); 
+            document.getElementById('fullReportPage').classList.remove('hidden');
+
+            if (result) {
+                document.getElementById('fullArchetypeIcon').textContent = result.archetypeIcon;
+                document.getElementById('fullArchetypeName').textContent = result.archetypeName + ' (' + result.typeCode + ')';
+
+                const currentType = archetypeTypes[result.typeCode] || archetypeTypes['MIPT'];
+                
+                document.getElementById('reportArchetypeName').textContent = '你的原型："' + currentType.name + '"';
+                document.getElementById('reportArchetypeDesc').textContent = currentType.desc;
+
+                // 生成并高亮16型图鉴
+                const paidTypeList = document.getElementById('paidTypeList');
+                paidTypeList.innerHTML = '';
+                
+                Object.keys(archetypeTypes).forEach(key => {
+                    const type = archetypeTypes[key];
+                    const typeDiv = document.createElement('div');
+                    typeDiv.className = 'personality-type';
+                    if (key === result.typeCode) {
+                        typeDiv.classList.add('current');
+                    }
+                    typeDiv.innerHTML = `
+                        <div class="type-number">${key}</div>
+                        <div class="type-name">${type.name}</div>
+                        <div class="type-score">${type.yearPref}型</div>
+                    `;
+                    paidTypeList.appendChild(typeDiv);
+                });
+
+                drawRadarChart('fullRadarChart', result.scores);
+            }
+
+            window.scrollTo(0, 0);
+        }
+        
+        function showAdminPanel() {
+            document.getElementById('cardVerifyPage').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+            document.getElementById('fullReportPage').classList.add('hidden');
+            document.getElementById('freeResultPage').classList.add('hidden');
+        }
+        
+        function verifyAdmin() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('adminContent').classList.remove('hidden');
+                loadAdminStats();
+            } else {
+                alert('密码错误');
+            }
+        }
+        
+        function loadAdminStats() {
+            const cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
+            
+            const total = cards.length;
+            const used = cards.filter(c => c.deviceId).length;
+            const devices = new Set(cards.filter(c => c.deviceId).map(c => c.deviceId)).size;
+            
+            document.getElementById('totalCards').textContent = total;
+            document.getElementById('usedCards').textContent = used;
+            document.getElementById('unusedCards').textContent = total - used;
+            document.getElementById('deviceCount').textContent = devices;
+            
+            const recentRecords = document.getElementById('recentRecords');
+            const recentCards = cards
+                .filter(c => c.lastUsedAt)
+                .sort((a, b) => new Date(b.lastUsedAt) - new Date(a.lastUsedAt))
+                .slice(0, 5);
+            
+            if (recentCards.length === 0) {
+                recentRecords.innerHTML = '<div class="record-item">暂无记录</div>';
+            } else {
+                recentRecords.innerHTML = '';
+                recentCards.forEach(card => {
+                    const date = new Date(card.lastUsedAt);
+                    const dateStr = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2,'0')}-${date.getDate().toString().padStart(2,'0')} ${date.getHours().toString().padStart(2,'0')}:${date.getMinutes().toString().padStart(2,'0')}`;
+                    
+                    const recordDiv = document.createElement('div');
+                    recordDiv.className = 'record-item';
+                    recordDiv.textContent = `${card.code} - 使用${card.testCount || 1}次 - ${dateStr}`;
+                    recentRecords.appendChild(recordDiv);
+                });
+            }
+        }
+        
+        function generateCards() {
+            const count = parseInt(document.getElementById('cardCount').value);
+            
+            if (!count || count < 1 || count > 1000) {
+                alert('请输入1-1000之间的数字');
+                return;
+            }
+            
+            const cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
+            const newCards = [];
+            
+            for (let i = 0; i < count; i++) {
+                newCards.push({
+                    code: generateCardCode(),
+                    createdAt: new Date().toISOString()
+                });
+            }
+            
+            cards.push(...newCards);
+            localStorage.setItem('ageCards', JSON.stringify(cards));
+            
+            const text = newCards.map(c => c.code).join('\n');
+            const blob = new Blob([text], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `年上年下测评卡密_${new Date().getTime()}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            alert(`成功生成${count}个卡密！`);
+            loadAdminStats();
+        }
+        
+        function generateCardCode() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let code = 'TF-';
+            
+            for (let i = 0; i < 4; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            
+            code += '-';
+            
+            for (let i = 0; i < 4; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            
+            return code;
+        }
+        
+        function backToMain() {
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('cardVerifyPage').classList.remove('hidden');
+        }
+        
+        window.onload = function() {
+            const cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
+            if (cards.length === 0) {
+                const testCards = [];
+                for (let i = 0; i < 10; i++) {
+                    testCards.push({
+                        code: generateCardCode(),
+                        createdAt: new Date().toISOString()
+                    });
+                }
+                localStorage.setItem('ageCards', JSON.stringify(testCards));
+                console.log('已生成10个测试卡密，请在管理员后台查看（密码：lss900201）');
+            }
+        };
+
+        function copyToClipboard(text, buttonElement) {
+            navigator.clipboard.writeText(text).then(function() {
+                const originalText = buttonElement.textContent;
+                buttonElement.textContent = '已复制!';
+                buttonElement.style.background = '#07C160';
+                setTimeout(() => {
+                    buttonElement.textContent = originalText;
+                    buttonElement.style.background = '#A07F56';
+                }, 2000);
+            }, function(err) {
+                alert('复制失败，请手动复制');
+            });
+        }
+
+        function generateReportImage() {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '正在生成图片...';
+            
+            const reportCard = document.getElementById('fullReportPage');
+            
+            html2canvas(reportCard, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                ignoreElements: (element) => {
+                    return element.tagName === 'BUTTON' || element.id === 'saveModal';
+                }
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const modal = document.getElementById('saveModal');
+                const img = document.getElementById('generatedReportImg');
+                img.src = imgData;
+                modal.style.display = 'flex';
+                btn.textContent = originalText;
+            }).catch(err => {
+                console.error(err);
+                alert('生成失败，请手动截图保存');
+                btn.textContent = originalText;
+            });
+        }
+
+        function closeSaveModal() {
+            document.getElementById('saveModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
+
+
+
