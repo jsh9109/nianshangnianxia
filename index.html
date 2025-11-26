@@ -1491,6 +1491,8 @@
             const cardCode = cardInput.value.trim().toUpperCase();
             const MASTER_CODE = "GEMINI-MASTER";
 
+            console.log('开始验证卡号:', cardCode); // 调试日志
+
             if (cardCode === MASTER_CODE) {
                 currentCard = MASTER_CODE;
                 showTestPage(); 
@@ -1503,12 +1505,11 @@
                 return;
             }
             
-            if (!/^TF-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(cardCode)) {
-                 if (!/^[A-Z0-9]{8,20}$/.test(cardCode)) {
-                    errorDiv.textContent = '卡号格式不正确';
-                    errorDiv.style.display = 'block';
-                    return;
-                }
+            // 接受两种格式：TF-XXXX-XXXX 或 任意8-20位字母数字
+            if (!/^TF-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(cardCode) && !/^[A-Z0-9]{8,20}$/.test(cardCode)) {
+                errorDiv.textContent = '卡号格式不正确';
+                errorDiv.style.display = 'block';
+                return;
             }
             
             const deviceId = getDeviceFingerprint();
@@ -1516,6 +1517,7 @@
             let card = cards.find(c => c.code === cardCode);
             
             if (!card) {
+                // 新卡号，自动创建
                 card = { 
                     code: cardCode, 
                     deviceId: deviceId,
@@ -1524,6 +1526,7 @@
                     testCount: 0
                 };
                 cards.push(card);
+                console.log('创建新卡号:', card);
             } else {
                 if (card.deviceId && card.deviceId !== deviceId) {
                     errorDiv.textContent = '该卡号已在其他设备使用，无法在本设备使用';
@@ -1535,6 +1538,7 @@
                     card.deviceId = deviceId;
                     card.firstUsedAt = new Date().toISOString();
                 }
+                console.log('使用已有卡号:', card);
             }
             
             card.testCount = (card.testCount || 0) + 1;
@@ -1543,6 +1547,7 @@
             localStorage.setItem('ageCards', JSON.stringify(cards));
             
             currentCard = card;
+            errorDiv.style.display = 'none'; // 隐藏错误信息
             showTestPage();
         }
         
