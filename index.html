@@ -1131,7 +1131,7 @@
                         <a href="https://qr.alipay.com/tsx15981nt9c4aydmvo2h3d" class="payment-btn alipay">
                             <span class="icon">⚡</span> 支付宝快捷支付
                         </a>
-                        <a href="javascript:void(0);" onclick="showWechatScan()" class="payment-btn wechat">
+                        <a href="javascript:void(0);" onclick="alert('请使用下方复制账号转账功能')" class="payment-btn wechat">
                             <span class="icon">⚡</span> 微信快捷支付
                         </a>
                     </div>
@@ -1142,14 +1142,14 @@
                         <div class="scan-title">📱 扫码支付</div>
                         <div class="qr-code-grid">
                             <div class="qr-code-item">
-                                <img src="wechat_qrcode.jpg" alt="微信收款码" id="wechatQR">
+                                <div style="width: 140px; height: 140px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px; text-align: center; padding: 10px;">微信收款码<br>请联系客服获取</div>
                             </div>
                             <div class="qr-code-item">
-                                <img src="alipay_qrcode.png" alt="支付宝收款码" id="alipayQR">
+                                <div style="width: 140px; height: 140px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px; text-align: center; padding: 10px;">支付宝收款码<br>请联系客服获取</div>
                             </div>
                         </div>
                         <div class="scan-tip">
-                            💡 保存后打开APP → 扫一扫 → 相册选择
+                            💡 建议使用上方快捷支付或复制账号转账
                         </div>
                     </div>
             
@@ -1162,7 +1162,7 @@
                             <button onclick="copyToClipboard('jsh9109', this)">复制微信</button>
                         </div>
                         <div class="copy-item">
-                            <span id="alipayID">313360631@qq.com</span>
+                            <span id="alipayID"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c5f5d5f5f5a5c5a5f5d2c1d1d420f0301">[email&#160;protected]</a></span>
                             <button onclick="copyToClipboard('313360631@qq.com', this)">复制支付宝</button>
                         </div>
                     </div>
@@ -1363,7 +1363,7 @@
         </div>
     </div>
     
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const ADMIN_PASSWORD = 'lss900201';
         
         /* [V5.0] 4维度 x 10题 = 40题 */
@@ -1618,13 +1618,12 @@
             }
         }
         
-        /* [V5.7 完全修复版] 计算结果函数 */
+        /* [V5.8 最终修复版] 计算结果函数 - 修正阈值逻辑 */
         function calculateResult() {
             try {
                 const dimensionScores = [0, 0, 0, 0];
-                const dimensionCounts = [10, 10, 10, 10];
                 
-                // 计算原始分数
+                // 计算原始分数（每个维度10题，满分50）
                 questions.forEach((q, i) => {
                     let score = answers[i]; // 1-5
                     if (q.reverse) {
@@ -1633,7 +1632,7 @@
                     dimensionScores[q.dimension] += score;
                 });
                 
-                console.log('原始维度得分 (满分50):', dimensionScores);
+                console.log('原始维度得分 (满分50，中位数30):', dimensionScores);
                 
                 // 转换为 4-20 分制用于图表展示
                 const finalScores = dimensionScores.map(score => 
@@ -1642,14 +1641,16 @@
                 
                 console.log('图表显示分数 (4-20):', finalScores);
                 
-                // 16型人格计算：使用27作为阈值（满分50的54%）
+                // 16型人格计算：使用32作为阈值（满分50的64%，避免全选"不确定"时都是M/I/T/P）
+                // 全选"不确定"(3分)时，每维度总分=30，应该偏向D/S/E/F
                 let typeCode = "";
-                typeCode += (dimensionScores[0] > 27) ? "M" : "D"; // 主导/追随
-                typeCode += (dimensionScores[1] > 27) ? "I" : "S"; // 独立/依赖  
-                typeCode += (dimensionScores[2] > 27) ? "T" : "E"; // 稳定/探索
-                typeCode += (dimensionScores[3] > 27) ? "P" : "F"; // 务实/理想
+                typeCode += (dimensionScores[0] >= 32) ? "M" : "D"; // 主导/追随
+                typeCode += (dimensionScores[1] >= 32) ? "I" : "S"; // 独立/依赖  
+                typeCode += (dimensionScores[2] >= 32) ? "T" : "E"; // 稳定/探索
+                typeCode += (dimensionScores[3] >= 32) ? "P" : "F"; // 务实/理想
 
                 console.log('计算出的类型代码:', typeCode);
+                console.log('判断逻辑: >=32为高分(M/I/T/P), <32为低分(D/S/E/F)');
                 
                 const resultType = archetypeTypes[typeCode];
                 
@@ -1658,14 +1659,14 @@
                     console.error('错误: 无法找到类型', typeCode);
                     console.log('可用的类型:', Object.keys(archetypeTypes));
                     
-                    // 使用最接近的类型作为备选
-                    typeCode = "MIPT"; // 默认类型
+                    // 使用平衡型作为备选
+                    typeCode = "DEST"; // 平衡探索家
                     
                     alert('测评计算完成，显示参考结果');
                 }
 
                 const finalType = archetypeTypes[typeCode];
-                console.log('最终匹配到的人格类型:', finalType.name);
+                console.log('最终匹配到的人格类型:', finalType.name, '(', finalType.yearPref, ')');
 
                 sessionStorage.setItem('testResult', JSON.stringify({
                     scores: finalScores,
@@ -1967,14 +1968,6 @@
             }
         };
 
-        function showWechatScan() {
-            const qrElement = document.getElementById('wechatQR');
-            if (qrElement) {
-                qrElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                alert('微信支付请保存二维码，\n然后打开微信扫一扫 → 相册选择');
-            }
-        }
-        
         function copyToClipboard(text, buttonElement) {
             navigator.clipboard.writeText(text).then(function() {
                 const originalText = buttonElement.textContent;
@@ -2012,14 +2005,4 @@
                 btn.textContent = originalText;
             }).catch(err => {
                 console.error(err);
-                alert('生成失败，请手动截图保存');
-                btn.textContent = originalText;
-            });
-        }
-
-        function closeSaveModal() {
-            document.getElementById('saveModal').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+                alert('生成失败，请手动截图保存'
