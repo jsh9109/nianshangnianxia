@@ -11,7 +11,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?你的新ID"; /* [V5.0] 请替换为您这个项目的新ID */
+      hm.src = "https://hm.baidu.com/hm.js?d9fa7aa184ccd246a69cf978ab0acc9d";
       var s = document.getElementsByTagName("script")[0]; 
       s.parentNode.insertBefore(hm, s);
     })();
@@ -806,7 +806,7 @@
         }
         
         .dos-card h4 {
-            color: #c62828;
+            color: #2e7d32;
             margin-bottom: 15px;
         }
         
@@ -1051,8 +1051,8 @@
             <div class="scores-list" id="scoresList"></div>
             
             <div class="type-card">
-                <h3 id="typeName">“全能守护者”人格</h3>
-                <p id="typeDesc">你倾向于扮演关系中的“年上”角色，具有较高的情绪成熟度和责任感，喜欢在关系中提供指导和保护。你的伴侣通常会是寻求安全感和新鲜感的“年下”类型。</p>
+                <h3 id="typeName">"全能守护者"人格</h3>
+                <p id="typeDesc">你倾向于扮演关系中的"年上"角色，具有较高的情绪成熟度和责任感，喜欢在关系中提供指导和保护。你的伴侣通常会是寻求安全感和新鲜感的"年下"类型。</p>
             </div>
             
             <div class="characteristics">
@@ -1122,7 +1122,8 @@
                 
                 <div class="price-tag">
                     <div class="original-price">原价 ¥29.9</div>
-                    <div class="current-price">¥4.9</div> <div class="price-note">限时特惠 · 一杯咖啡的价格换来一段健康的亲密关系</div>
+                    <div class="current-price">¥4.9</div>
+                    <div class="price-note">限时特惠 · 一杯咖啡的价格换来一段健康的亲密关系</div>
                 </div>
                 
                 <div class="payment-section">
@@ -1193,36 +1194,17 @@
             
             <div class="report-section">
                 <h3>📜 第一部分：角色定位与核心驱动力</h3>
-                <h4>你的原型：“全能守护者”</h4>
-                <p>你的关系原型是**全能守护者 (MIST)**。这代表你在关系中扮演着提供稳定、指引方向和解决问题的“年上”角色。你拥有高成熟度、独立自主和稳定的生活节奏。你的伴侣通常会是寻求安全感和新鲜感的“年下”类型。</p>
+                <h4 id="reportArchetypeName">你的原型："全能守护者"</h4>
+                <p id="reportArchetypeDesc">你的关系原型是**全能守护者 (MIST)**。这代表你在关系中扮演着提供稳定、指引方向和解决问题的"年上"角色。你拥有高成熟度、独立自主和稳定的生活节奏。你的伴侣通常会是寻求安全感和新鲜感的"年下"类型。</p>
                 
                 <h4>你的核心驱动力与挑战</h4>
-                <p>你的核心驱动力是**“责任感”**与**“安全感”**。你渴望通过对关系的规划和控制，来确保这段关系是稳定、可预测的。你的挑战在于，你容易在不知不觉中承担了过多的责任，让伴侣失去了成长的空间，最终导致关系失衡。</p>
+                <p>你的核心驱动力是**"责任感"**与**"安全感"**。你渴望通过对关系的规划和控制，来确保这段关系是稳定、可预测的。你的挑战在于，你容易在不知不觉中承担了过多的责任，让伴侣失去了成长的空间，最终导致关系失衡。</p>
             </div>
             
             <div class="report-section">
                 <h3>🧭 第二部分：16型角色原型图鉴 (付费内容)</h3>
                 <div class="personality-types" id="paidTypeList">
-                    <div class="personality-type">
-                        <div class="type-number">A1B1C1D1</div>
-                        <div class="type-name">全能守护者</div>
-                        <div class="type-score">高年上 / 稳定独立型</div>
-                    </div>
-                    <div class="personality-type">
-                        <div class="type-number">A1B1C1D2</div>
-                        <div class="type-name">理性引路人</div>
-                        <div class="type-score">高年上 / 务实导向型</div>
-                    </div>
-                    <div class="personality-type">
-                        <div class="type-number">A1B1C2D1</div>
-                        <div class="type-name">随性领导者</div>
-                        <div class="type-score">高年上 / 探索独立型</div>
-                    </div>
-                    <div class="personality-type">
-                        <div class="type-number">A2B2C2D2</div>
-                        <div class="type-name">浪漫追随者</div>
-                        <div class="type-score">高年下 / 依赖理想型</div>
-                    </div>
+                    <!-- 动态生成16个类型 -->
                 </div>
             </div>
             
@@ -1230,11 +1212,11 @@
                 <h3>⚖️ 第三部分：年上年下边界建立计划</h3>
                 
                 <div class="action-plan">
-                    <h4>30天角色平衡计划 (MIST专用)</h4>
+                    <h4>30天角色平衡计划 (专用)</h4>
                     <ul>
-                        <li>第1-10天：练习“放手”，在小事上让伴侣做主，不加评论。</li>
-                        <li>第11-20天：找回“自我”，每周进行一次不带伴侣的个人爱好活动。</li>
-                        <li>第21-30天：建立“平等沟通日”，双方轮流主导一次重大决定。</li>
+                        <li>第1-10天：练习"放手"，在小事上让伴侣做主，不加评论。</li>
+                        <li>第11-20天：找回"自我"，每周进行一次不带伴侣的个人爱好活动。</li>
+                        <li>第21-30天：建立"平等沟通日"，双方轮流主导一次重大决定。</li>
                     </ul>
                 </div>
                 
@@ -1242,11 +1224,11 @@
                 <p style="background: #E8F5E9; padding: 15px; border-radius: 8px; color: #2e7d32;">
                     <strong>场景1：伴侣寻求指导</strong><br>
                     ❌ "你这样想就对了，听我的。"<br>
-                    ✅ "这是一个方法，但你觉得这样做，对你来说最大的挑战会是什么？" (将“指导”变成“提问”)
+                    ✅ "这是一个方法，但你觉得这样做，对你来说最大的挑战会是什么？" (将"指导"变成"提问")
                 </p>
                 
                 <p style="background: #E8F5E9; padding: 15px; border-radius: 8px; color: #2e7d32; margin-top: 15px;">
-                    <strong>场景2：伴侣抱怨你“太强势”</strong><br>
+                    <strong>场景2：伴侣抱怨你"太强势"</strong><br>
                     ❌ "我这是为你好，你还不懂吗？"<br>
                     ✅ "对不起，我没注意到我的语气太重了。下次请提醒我，我更想和你一起讨论，而不是替你决定。" (承认自己的角色失衡)
                 </p>
@@ -1297,7 +1279,7 @@
                                 这种行为会破坏信任基础，降低伴侣的安全感。
                             </li>
                             <li style="padding: 10px 0; border-bottom: 1px solid #FFC8C8;">
-                                <strong>2. 用“我都是为你好”来压制</strong><br>
+                                <strong>2. 用"我都是为你好"来压制</strong><br>
                                 权威式的保护欲，会让伴侣失去自我成长空间。
                             </li>
                             <li style="padding: 10px 0;">
@@ -1311,7 +1293,7 @@
                         <h4>✅ 一定要做的3件事</h4>
                         <ul style="list-style: none; padding: 0;">
                             <li style="padding: 10px 0; border-bottom: 1px solid #a5d6a7;">
-                                <strong>1. 建立“非父母”边界</strong><br>
+                                <strong>1. 建立"非父母"边界</strong><br>
                                 允许伴侣犯错，把伴侣视为平等的成年人。
                             </li>
                             <li style="padding: 10px 0; border-bottom: 1px solid #a5d6a7;">
@@ -1390,11 +1372,11 @@
             {text: '在关系中，我倾向于主动规划约会和旅行。', dimension: 0},
             {text: '我更喜欢对方听从我的意见，而不是争论不休。', dimension: 0},
             {text: '为了团队和谐，我愿意放弃自己的观点。', dimension: 0, reverse: true}, // 反向计分
-            {text: '我经常充当关系中的“决策者”。', dimension: 0},
+            {text: '我经常充当关系中的"决策者"。', dimension: 0},
             {text: '我喜欢掌控金钱，并管理共同的财务。', dimension: 0},
             {text: '我更喜欢被照顾和安排，而不是去照顾别人。', dimension: 0, reverse: true},
             {text: '我愿意为伴侣的快乐承担大部分责任。', dimension: 0},
-            {text: '我很难对伴侣说“不”，即使我不同意。', dimension: 0, reverse: true},
+            {text: '我很难对伴侣说"不"，即使我不同意。', dimension: 0, reverse: true},
             {text: '我更喜欢有人替我拿主意。', dimension: 0, reverse: true},
             {text: '我认为关系中应该有明确的领导者。', dimension: 0},
 
@@ -1437,38 +1419,28 @@
         
         const options = ['完全不像我', '不太像我', '不确定', '有点像我', '非常像我'];
         
-        // [V5.0] 16型角色原型
-// [V5.1 修复] 16型角色原型 (已确保语法干净)
-// --- [V5.2 修复后的 16型人格计算映射] ---
-const archetypeTypes = {
-    /* M: Mature/Lead(主导) | D: Dependent/Follow(追随)
-       I: Independent(独立) | S: Seeking Care(依赖)
-       T: Traditional/Stable(稳定) | E: Explorer/Spontaneous(探索)
-       P: Pragmatic/Practical(务实) | F: Feeling/Idealist(理想) */
-    
-    // --- 年上倾向 (M***) ---
-    'MIPT': { name: '全能守护者', icon: '👑', desc: '高主导、高独立、高稳定、高务实。成熟稳重，是关系的绝对支柱。', yearPref: '年上' },
-    'MIPF': { name: '务实引导者', icon: '🛠️', desc: '高主导、高独立、高务实，但情感上追求理想。是能提供物质和精神双重引导的年上。', yearPref: '年上' },
-    'MIST': { name: '理性引路人', icon: '🧭', desc: '高主导、高独立、高稳定，但情感上略依赖。是关系中稳定的导师和引领者。', yearPref: '年上' },
-    'MISF': { name: '温情领航员', icon: '🚢', desc: '高主导、高独立、高理想，是能提供方向和温暖的年上。', yearPref: '年上' },
-    
-    'MEPT': { name: '随性领导者', icon: '💡', desc: '高主导、高探索、高稳定，独立性一般。在关系中是充满活力和新鲜感的领导者。', yearPref: '年上' },
-    'MEPF': { name: '强势探索家', icon: '⚡', desc: '高主导、高探索、高务实，是行动派的年上。', yearPref: '年上' },
-    'MEST': { name: '掌控依赖型', icon: '🔗', desc: '高主导、高探索，但略依赖和稳定。倾向于掌控一切，但情感上需要支持。', yearPref: '年上' },
-    'MESF': { name: '浪漫支配者', icon: '🔥', desc: '高主导、高探索、高理想，是关系中充满激情和浪漫的年上。', yearPref: '年上' },
+        // [V5.2 修复] 16型角色原型 - 修复emoji显示
+        const archetypeTypes = {
+            'MIPT': { name: '全能守护者', icon: '👑', desc: '高主导、高独立、高稳定、高务实。成熟稳重，是关系的绝对支柱。', yearPref: '年上' },
+            'MIPF': { name: '务实引导者', icon: '🛠️', desc: '高主导、高独立、高务实，但情感上追求理想。是能提供物质和精神双重引导的年上。', yearPref: '年上' },
+            'MIST': { name: '理性引路人', icon: '🧭', desc: '高主导、高独立、高稳定，但情感上略依赖。是关系中稳定的导师和引领者。', yearPref: '年上' },
+            'MISF': { name: '温情领航员', icon: '🚢', desc: '高主导、高独立、高理想，是能提供方向和温暖的年上。', yearPref: '年上' },
+            
+            'MEPT': { name: '随性领导者', icon: '💡', desc: '高主导、高探索、高稳定，独立性一般。在关系中是充满活力和新鲜感的领导者。', yearPref: '年上' },
+            'MEPF': { name: '强势探索家', icon: '⚡', desc: '高主导、高探索、高务实，是行动派的年上。', yearPref: '年上' },
+            'MEST': { name: '掌控依赖型', icon: '🔗', desc: '高主导、高探索，但略依赖和稳定。倾向于掌控一切，但情感上需要支持。', yearPref: '年上' },
+            'MESF': { name: '浪漫支配者', icon: '🔥', desc: '高主导、高探索、高理想，是关系中充满激情和浪漫的年上。', yearPref: '年上' },
 
-    // --- 年下倾向 (D***) ---
-    'DIPT': { name: '独立平衡型', icon: '⚖️', desc: '低主导（追随）、高独立、高稳定、高务实。虽然追随，但自我独立性强，是追求平稳的伴侣。', yearPref: '平衡' },
-    'DIPF': { name: '务实追随者', icon: '📈', desc: '低主导、高独立、高务实，但追求理想。是脚踏实地，但又渴望浪漫的年下。', yearPref: '平衡' },
-    'DIST': { name: '温顺的跟随者', icon: '🦢', desc: '低主导、高依赖、高稳定、高务实。渴望被照顾和安排的传统年下。', yearPref: '年下' },
-    'DISF': { name: '随性依赖者', icon: '🧸', desc: '低主导、高依赖、高理想，在关系中寻求安全感和被照顾，是典型的年下。', yearPref: '年下' },
+            'DIPT': { name: '独立平衡型', icon: '⚖️', desc: '低主导（追随）、高独立、高稳定、高务实。虽然追随，但自我独立性强，是追求平稳的伴侣。', yearPref: '平衡' },
+            'DIPF': { name: '务实追随者', icon: '📈', desc: '低主导、高独立、高务实，但追求理想。是脚踏实地，但又渴望浪漫的年下。', yearPref: '平衡' },
+            'DIST': { name: '温顺的跟随者', icon: '🦢', desc: '低主导、高依赖、高稳定、高务实。渴望被照顾和安排的传统年下。', yearPref: '年下' },
+            'DISF': { name: '随性依赖者', icon: '🧸', desc: '低主导、高依赖、高理想，在关系中寻求安全感和被照顾，是典型的年下。', yearPref: '年下' },
 
-    'DEPT': { name: '探索型伙伴', icon: '🗺️', desc: '低主导、高探索、高稳定，独立性一般。乐于跟随和探索新事物，是关系中的活力伙伴。', yearPref: '平衡' },
-    'DEPF': { name: '好奇宝宝', icon: '好奇', desc: '低主导、高探索、高务实，是理性驱动的好奇追随者。', yearPref: '平衡' },
-    'DEST': { name: '平衡探索家', icon: '🤝', desc: '低主导、高依赖、高探索，但偏向稳定。寻求平衡，乐于尝试但底线稳定。', yearPref: '平衡' },
-    'DESF': { name: '浪漫追随者', icon: '✨', desc: '低主导、高依赖、高探索、高理想。典型的浪漫、依赖型年下，为关系带来情感价值。', yearPref: '年下' }
-};
-// --- [V5.2 修复代码结束] ---
+            'DEPT': { name: '探索型伙伴', icon: '🗺️', desc: '低主导、高探索、高稳定，独立性一般。乐于跟随和探索新事物，是关系中的活力伙伴。', yearPref: '平衡' },
+            'DEPF': { name: '好奇宝宝', icon: '🔍', desc: '低主导、高探索、高务实，是理性驱动的好奇追随者。', yearPref: '平衡' },
+            'DEST': { name: '平衡探索家', icon: '🤝', desc: '低主导、高依赖、高探索，但偏向稳定。寻求平衡，乐于尝试但底线稳定。', yearPref: '平衡' },
+            'DESF': { name: '浪漫追随者', icon: '✨', desc: '低主导、高依赖、高探索、高理想。典型的浪漫、依赖型年下，为关系带来情感价值。', yearPref: '年下' }
+        };
 
         let currentPage = 'verify';
         let currentQuestion = 0;
@@ -1513,21 +1485,17 @@ const archetypeTypes = {
             }
         }
         
-        /* --- [V5.0] 修复卡密绑定逻辑 --- */
         function verifyCard() {
             const cardInput = document.getElementById('cardInput');
             const errorDiv = document.getElementById('errorMessage');
             const cardCode = cardInput.value.trim().toUpperCase();
-            // [V3.3] 定义万能卡密
-    const MASTER_CODE = "GEMINI-MASTER";
+            const MASTER_CODE = "GEMINI-MASTER";
 
-    // 检查是否为万能卡密，如果是，则跳过所有绑定和验证
-    if (cardCode === MASTER_CODE) {
-        currentCard = MASTER_CODE;
-        // 调用 showTestPage() 函数，进入答题页面
-        showTestPage(); 
-        return; // 立即退出 verifyCard 函数
-    }
+            if (cardCode === MASTER_CODE) {
+                currentCard = MASTER_CODE;
+                showTestPage(); 
+                return;
+            }
             
             if (!cardCode) {
                 errorDiv.textContent = '请输入测评卡号';
@@ -1535,7 +1503,6 @@ const archetypeTypes = {
                 return;
             }
             
-            // 允许 TF- 和非 TF- 格式
             if (!/^TF-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(cardCode)) {
                  if (!/^[A-Z0-9]{8,20}$/.test(cardCode)) {
                     errorDiv.textContent = '卡号格式不正确';
@@ -1545,31 +1512,25 @@ const archetypeTypes = {
             }
             
             const deviceId = getDeviceFingerprint();
-            // 关键修复：使用 'ageCards' 避免项目冲突
             let cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
             let card = cards.find(c => c.code === cardCode);
             
-            // --- [V5.0] 逻辑修正开始 ---
             if (!card) {
-                // 如果卡号不存在，就创建它，并绑定到当前设备
                 card = { 
                     code: cardCode, 
-                    deviceId: deviceId, // 立即绑定
+                    deviceId: deviceId,
                     createdAt: new Date().toISOString(),
                     firstUsedAt: new Date().toISOString(),
-                    testCount: 0 // 初始测试次数
+                    testCount: 0
                 };
                 cards.push(card);
-
             } else {
-                // 如果卡号存在，检查设备ID
                 if (card.deviceId && card.deviceId !== deviceId) {
                     errorDiv.textContent = '该卡号已在其他设备使用，无法在本设备使用';
                     errorDiv.style.display = 'block';
                     return;
                 }
                 
-                // (兼容旧卡) 如果找到卡，但它没有deviceId，就绑定它
                 if (!card.deviceId) {
                     card.deviceId = deviceId;
                     card.firstUsedAt = new Date().toISOString();
@@ -1579,7 +1540,6 @@ const archetypeTypes = {
             card.testCount = (card.testCount || 0) + 1;
             card.lastUsedAt = new Date().toISOString();
             
-            // 关键修复：使用 'ageCards'
             localStorage.setItem('ageCards', JSON.stringify(cards));
             
             currentCard = card;
@@ -1587,7 +1547,6 @@ const archetypeTypes = {
         }
         
         function showTestPage() {
-            // [V5.0] 修正了页面切换函数
             document.getElementById('cardVerifyPage').classList.add('hidden');
             document.getElementById('testPage').classList.remove('hidden');
             document.getElementById('fullReportPage').classList.add('hidden');
@@ -1625,21 +1584,18 @@ const archetypeTypes = {
             document.getElementById('nextBtn').textContent = currentQuestion === 39 ? '完成测评 ✓' : '下一题 →';
         }
         
-function selectOption(value) {
-    answers[currentQuestion] = value;
-    // 渲染，显示已选中的状态
-    renderQuestion(); 
+        function selectOption(value) {
+            answers[currentQuestion] = value;
+            renderQuestion(); 
 
-    // 自动下一题或完成测评
-    setTimeout(() => {
-        if (currentQuestion < 39) {
-            nextQuestion();
-        } else {
-            // V5.4 修复: 如果是最后一题，直接计算结果
-            calculateResult();
+            setTimeout(() => {
+                if (currentQuestion < 39) {
+                    nextQuestion();
+                } else {
+                    calculateResult();
+                }
+            }, 200);
         }
-    }, 200);
-}
         
         function prevQuestion() {
             if (currentQuestion > 0) {
@@ -1662,53 +1618,61 @@ function selectOption(value) {
             }
         }
         
-        /* [V5.1] 16型人格计算逻辑 (已修正逻辑) */
-   /* [V5.4 修复] 16型人格计算逻辑：修复变量未定义和分数计算 */
-function calculateResult() {
-    const dimensionScores = [0, 0, 0, 0];
-    const dimensionCounts = [10, 10, 10, 10];
-    
-    questions.forEach((q, i) => {
-        let score = answers[i]; // 1-5
-        if (q.reverse) {
-            score = 6 - score; // 反向计分 (5-1)
+        /* [V5.6 完整修复] 计算结果函数 - 修正阈值和分数计算 */
+        function calculateResult() {
+            const dimensionScores = [0, 0, 0, 0];
+            const dimensionCounts = [10, 10, 10, 10];
+            
+            questions.forEach((q, i) => {
+                let score = answers[i]; // 1-5
+                if (q.reverse) {
+                    score = 6 - score; // 反向计分
+                }
+                dimensionScores[q.dimension] += score;
+            });
+            
+            console.log('原始维度得分 (满分50):', dimensionScores);
+            
+            // 转换为 4-20 分制用于图表展示
+            const finalScores = dimensionScores.map(score => 
+                Math.round((score / 50) * 16) + 4
+            );
+            
+            console.log('图表显示分数 (4-20):', finalScores);
+            
+            // 16型人格计算：阈值修正为 25 (满分50的中位数)
+            let typeCode = "";
+            typeCode += (dimensionScores[0] > 25) ? "M" : "D"; 
+            typeCode += (dimensionScores[1] > 25) ? "I" : "S"; 
+            typeCode += (dimensionScores[2] > 25) ? "T" : "E"; 
+            typeCode += (dimensionScores[3] > 25) ? "P" : "F"; 
+
+            console.log('计算出的类型代码:', typeCode);
+            
+            const resultType = archetypeTypes[typeCode];
+            
+            if (!resultType) {
+                console.error('错误: 无法找到类型', typeCode);
+                alert('测评出错，请刷新页面重试');
+                return;
+            }
+
+            console.log('匹配到的人格类型:', resultType.name);
+
+            sessionStorage.setItem('testResult', JSON.stringify({
+                scores: finalScores,
+                rawScores: dimensionScores,
+                typeCode: typeCode,
+                archetypeIcon: resultType.icon,
+                archetypeName: resultType.name,
+                archetypeDesc: resultType.desc,
+                yearPref: resultType.yearPref
+            }));
+            
+            showFreeResult();
         }
-        dimensionScores[q.dimension] += score;
-    });
-    
-    // V5.4 修复: 计算 4-20 分制的分数，用于图表展示
-    const finalScores = dimensionScores.map((score, i) => 
-        // 总分 10-50，转换为 4-20 分制
-        Math.round((score / dimensionCounts[i]) * 4) 
-    );
-    
-    // V5.4 修复: 16型人格计算：计算字母代号 (阈值 30，严格大于 30 才算高倾向)
-    let typeCode = "";
-    // 支配(M) vs 追随(D)：得分 > 30 选 M (年上倾向)
-    typeCode += (dimensionScores[0] > 30) ? "M" : "D"; 
-    // 独立(I) vs 依赖(S)：得分 > 30 选 I (年上倾向)
-    typeCode += (dimensionScores[1] > 30) ? "I" : "S"; 
-    // 稳定(T) vs 探索(E)：得分 > 30 选 T (年上倾向)
-    typeCode += (dimensionScores[2] > 30) ? "T" : "E"; 
-    // 务实(P) vs 理想(F)：得分 > 30 选 P (年上倾向)
-    typeCode += (dimensionScores[3] > 30) ? "P" : "F"; 
-
-    // 使用修复后的映射，如果找不到则默认给一个高年上类型 MIPT
-    const resultType = archetypeTypes[typeCode] || archetypeTypes['MIPT']; 
-
-    // V5.4 修复: 确保 scores 存储的是 finalScores (4-20分制)
-    sessionStorage.setItem('testResult', JSON.stringify({
-        scores: finalScores, // 现在使用已定义的 finalScores
-        typeCode: typeCode,
-        archetypeIcon: resultType.icon,
-        archetypeName: resultType.name,
-        archetypeDesc: resultType.desc,
-        yearPref: resultType.yearPref
-    }));
-    
-    showFreeResult();
-}
         
+        /* [V5.6 完整修复] 免费结果页 - 添加数据填充 */
         function showFreeResult() {
             const result = JSON.parse(sessionStorage.getItem('testResult'));
             
@@ -1718,7 +1682,11 @@ function calculateResult() {
             document.getElementById('freeResultPage').classList.remove('hidden');
             currentPage = 'freeResult';
 
-            // ... (填充结果代码) ...
+            // ✅ 填充免费结果页面的核心数据
+            document.getElementById('archetypeIcon').textContent = result.archetypeIcon;
+            document.getElementById('archetypeName').textContent = result.archetypeName + ' (' + result.typeCode + ')';
+            document.getElementById('typeName').textContent = '"' + result.archetypeName + '"人格';
+            document.getElementById('typeDesc').textContent = result.archetypeDesc;
             
             drawRadarChart('radarChart', result.scores);
             
@@ -1755,8 +1723,8 @@ function calculateResult() {
                     datasets: [{
                         label: '你的得分 (4-20分)',
                         data: scores,
-                        backgroundColor: 'rgba(160, 127, 86, 0.2)', /* 焦糖色 */
-                        borderColor: '#A07F56', /* 焦糖色 */
+                        backgroundColor: 'rgba(160, 127, 86, 0.2)',
+                        borderColor: '#A07F56',
                         borderWidth: 3,
                         pointBackgroundColor: '#A07F56',
                         pointBorderColor: '#fff',
@@ -1781,10 +1749,10 @@ function calculateResult() {
                             },
                             pointLabels: {
                                 font: {size: isMobile ? 11 : 13, weight: 'bold'},
-                                color: '#856847', /* 深焦糖色 */
+                                color: '#856847',
                                 padding: isMobile ? 8 : 15
                             },
-                            grid: {color: '#F5E8D6'}, /* 浅奶油 */
+                            grid: {color: '#F5E8D6'},
                             angleLines: {color: '#F5E8D6'}
                         }
                     },
@@ -1795,71 +1763,58 @@ function calculateResult() {
             });
         }
         
-        /* [V3.2] 真实(模拟)上传逻辑 */
         function handlePaymentProof(event) {
             const file = event.target.files[0];
             if (file) {
-                // 只要有文件被选中 (无论是什么文件)，
-                // 我们就立即显示完整报告。
                 showFullReport();
             }
         }
-function showFullReport() {        
-       const result = JSON.parse(sessionStorage.getItem('testResult'));
-    
-// V5.4 修复: 确保所有无关页面都被隐藏
-document.getElementById('cardVerifyPage').classList.add('hidden');
-document.getElementById('testPage').classList.add('hidden');
-document.getElementById('freeResultPage').classList.add('hidden');
-document.getElementById('adminPanel').classList.add('hidden'); 
+        
+        /* [V5.6 完整修复] 完整报告页 - 动态生成16型并高亮 */
+        function showFullReport() {        
+            const result = JSON.parse(sessionStorage.getItem('testResult'));
+        
+            document.getElementById('cardVerifyPage').classList.add('hidden');
+            document.getElementById('testPage').classList.add('hidden');
+            document.getElementById('freeResultPage').classList.add('hidden');
+            document.getElementById('adminPanel').classList.add('hidden'); 
+            document.getElementById('fullReportPage').classList.remove('hidden');
 
-// 显示完整报告页
-document.getElementById('fullReportPage').classList.remove('hidden');
+            if (result) {
+                document.getElementById('fullArchetypeIcon').textContent = result.archetypeIcon;
+                document.getElementById('fullArchetypeName').textContent = result.archetypeName + ' (' + result.typeCode + ')';
 
-// V5.4 填充完整报告内容
-if (result) {
-    // 填充结果 banner
-    document.getElementById('fullArchetypeIcon').textContent = result.archetypeIcon;
-    document.getElementById('fullArchetypeName').textContent = result.archetypeName + ' (' + result.typeCode + ')';
+                const currentType = archetypeTypes[result.typeCode] || archetypeTypes['MIPT'];
+                
+                document.getElementById('reportArchetypeName').textContent = '你的原型："' + currentType.name + '"';
+                document.getElementById('reportArchetypeDesc').textContent = currentType.desc;
 
-    // 获取当前原型描述 (请确保您使用了最新的 archetypeTypes 对象)
-    const currentType = archetypeTypes[result.typeCode] || archetypeTypes['MIPT'];
-    
-    // 填充第一部分
-    document.querySelector('#fullReportPage .report-section h4').textContent = '你的原型：“' + currentType.name + '”';
-    document.querySelector('#fullReportPage .report-section p').textContent = currentType.desc;
+                // 生成并高亮16型图鉴
+                const paidTypeList = document.getElementById('paidTypeList');
+                paidTypeList.innerHTML = '';
+                
+                Object.keys(archetypeTypes).forEach(key => {
+                    const type = archetypeTypes[key];
+                    const typeDiv = document.createElement('div');
+                    typeDiv.className = 'personality-type';
+                    if (key === result.typeCode) {
+                        typeDiv.classList.add('current');
+                    }
+                    typeDiv.innerHTML = `
+                        <div class="type-number">${key}</div>
+                        <div class="type-name">${type.name}</div>
+                        <div class="type-score">${type.yearPref}型</div>
+                    `;
+                    paidTypeList.appendChild(typeDiv);
+                });
 
-    // 突出显示当前类型在 16 型图鉴中的位置
-    const paidTypeList = document.getElementById('paidTypeList');
-    // 清理原有列表内容
-    paidTypeList.innerHTML = '';
-    
-    // 遍历 archetypeTypes 填充 16 个类型
-    // 注意: 您需要在我第一个回复中复制的完整 archetypeTypes 对象
-    Object.keys(archetypeTypes).forEach(key => {
-        const type = archetypeTypes[key];
-        const typeDiv = document.createElement('div');
-        typeDiv.className = 'personality-type';
-        if (key === result.typeCode) {
-            typeDiv.classList.add('current');
+                drawRadarChart('fullRadarChart', result.scores);
+            }
+
+            window.scrollTo(0, 0);
         }
-        typeDiv.innerHTML = `
-            <div class="type-number">${key}</div>
-            <div class="type-name">${type.name}</div>
-            <div class="type-score">${type.yearPref}型</div>
-        `;
-        paidTypeList.appendChild(typeDiv);
-    });
-
-    // 绘制完整的雷达图
-    drawRadarChart('fullRadarChart', result.scores);
-}
-
-// 滚动到顶部，确保内容正确显示，解决可能由滚动条造成的“白色区域”问题
-window.scrollTo(0, 0);
-        }
+        
         function showAdminPanel() {
-            // [V5.0] 修正了页面切换函数
             document.getElementById('cardVerifyPage').classList.add('hidden');
             document.getElementById('adminPanel').classList.remove('hidden');
             document.getElementById('fullReportPage').classList.add('hidden');
@@ -1878,7 +1833,6 @@ window.scrollTo(0, 0);
         }
         
         function loadAdminStats() {
-            // [V5.0] 关键修复：使用 'ageCards'
             const cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
             
             const total = cards.length;
@@ -1920,7 +1874,6 @@ window.scrollTo(0, 0);
                 return;
             }
             
-            // [V5.0] 关键修复：使用 'ageCards'
             const cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
             const newCards = [];
             
@@ -1970,7 +1923,6 @@ window.scrollTo(0, 0);
         }
         
         window.onload = function() {
-            // [V5.0] 关键修复：使用 'ageCards'
             const cards = JSON.parse(localStorage.getItem('ageCards') || '[]');
             if (cards.length === 0) {
                 const testCards = [];
@@ -1985,7 +1937,6 @@ window.scrollTo(0, 0);
             }
         };
 
-        // --- [V5.0] 辅助函数 ---
         function showWechatScan() {
             const qrElement = document.getElementById('wechatQR');
             if (qrElement) {
@@ -1998,17 +1949,16 @@ window.scrollTo(0, 0);
             navigator.clipboard.writeText(text).then(function() {
                 const originalText = buttonElement.textContent;
                 buttonElement.textContent = '已复制!';
-                buttonElement.style.background = '#07C160'; // 变绿色
+                buttonElement.style.background = '#07C160';
                 setTimeout(() => {
                     buttonElement.textContent = originalText;
-                    buttonElement.style.background = '#A07F56'; // 变回主题色
+                    buttonElement.style.background = '#A07F56';
                 }, 2000);
             }, function(err) {
                 alert('复制失败，请手动复制');
             });
         }
 
-        /* [V5.0] 生成报告图片功能 */
         function generateReportImage() {
             const btn = event.target;
             const originalText = btn.textContent;
@@ -2043,11 +1993,3 @@ window.scrollTo(0, 0);
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
