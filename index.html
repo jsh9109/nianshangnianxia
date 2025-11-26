@@ -1140,13 +1140,12 @@
             
                     <div class="scan-payment">
                         <div class="scan-title">📱 扫码支付</div>
-                        <div class="qr-code-grid">
-                            <div class="qr-code-item">
-                                <div style="width: 140px; height: 140px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px; text-align: center; padding: 10px;">微信收款码<br>请联系客服获取</div>
-                            </div>
-                            <div class="qr-code-item">
-                                <div style="width: 140px; height: 140px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px; text-align: center; padding: 10px;">支付宝收款码<br>请联系客服获取</div>
-                            </div>
+<div class="qr-code-item">
+    <img src="wechat_qrcode.jpg" alt="微信收款码" style="width: 140px; height: 140px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+</div>
+<div class="qr-code-item">
+    <img src="alipay_qrcode.png" alt="支付宝收款码" style="width: 140px; height: 140px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+</div>
                         </div>
                         <div class="scan-tip">
                             💡 建议使用上方快捷支付或复制账号转账
@@ -1664,10 +1663,10 @@
                     console.error('错误: 无法找到类型', typeCode);
                     console.log('可用的类型:', Object.keys(archetypeTypes));
                     
-                    // 使用平衡型作为备选
-                    typeCode = "DEST"; // 平衡探索家
-                    
-                    alert('测评计算完成，显示参考结果');
+// 使用最接近的默认类型
+typeCode = "DESF"; // 浪漫追随者（确保存在）
+// 不显示任何提示，直接使用默认类型
+console.warn('使用默认类型:', typeCode);
                 }
 
                 const finalType = archetypeTypes[typeCode];
@@ -2021,3 +2020,4 @@
     </script>
 </body>
 </html>
+
