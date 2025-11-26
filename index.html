@@ -1662,45 +1662,45 @@ function selectOption(value) {
         }
         
         /* [V5.1] 16型人格计算逻辑 (已修正逻辑) */
-        function calculateResult() {
-            const dimensionScores = [0, 0, 0, 0];
-            const dimensionCounts = [10, 10, 10, 10];
-            
-            questions.forEach((q, i) => {
-                let score = answers[i]; // 1-5
-                if (q.reverse) {
-                    score = 6 - score; // 反向计分
-                }
-                dimensionScores[q.dimension] += score;
-            });
-            
-            // [V5.1] 维度平均分 (4-20分)
-// --- [V5.2 推荐的平均分计算] ---
-// 将总分 (10-50分) 转换为平均分 (1-5分)
-const avgScores = dimensionScores.map((score, i) =>
-    Math.round((score / dimensionCounts[i]) * 10) / 10 // 保留一位小数的平均分 (1.0 - 5.0)
-);
-            
-            // [V5.1] 16型人格计算：计算字母代号 (阈值 30，即平均分 3.0)
-            let typeCode = "";
-            typeCode += (dimensionScores[0] > 30) ? "M" : "D"; // 支配(M) vs 追随(D)
-            typeCode += (dimensionScores[1] > 30) ? "I" : "S"; // 独立(I) vs 依赖(S)
-            typeCode += (dimensionScores[2] > 30) ? "T" : "E"; // 稳定(T) vs 探索(E)
-            typeCode += (dimensionScores[3] > 30) ? "P" : "F"; // 务实(P) vs 理想(F)
-
-            const resultType = archetypeTypes[typeCode] || archetypeTypes['MIST']; // 默认全能守护者
-
-            sessionStorage.setItem('testResult', JSON.stringify({
-                scores: finalScores,
-                typeCode: typeCode,
-                archetypeIcon: resultType.icon,
-                archetypeName: resultType.name,
-                archetypeDesc: resultType.desc,
-                yearPref: resultType.yearPref
-            }));
-            
-            showFreeResult();
+   /* [V5.4 修复] 16型人格计算逻辑：修复变量未定义和分数计算 */
+function calculateResult() {
+    const dimensionScores = [0, 0, 0, 0];
+    const dimensionCounts = [10, 10, 10, 10];
+    
+    questions.forEach((q, i) => {
+        let score = answers[i]; // 1-5
+        if (q.reverse) {
+            score = 6 - score; // 反向计分 (5-1)
         }
+        dimensionScores[q.dimension] += score;
+    });
+    
+    // V5.4 修复: 重新计算 4-20 分制的分数，用于图表展示
+    const finalScores = dimensionScores.map((score, i) => 
+        Math.round((score / dimensionCounts[i]) * 4) // (10-50分) / 10 * 4 => 4-20分
+    );
+    
+    // [V5.1] 16型人格计算：计算字母代号 (阈值 30，即平均分 3.0)
+    let typeCode = "";
+    typeCode += (dimensionScores[0] > 30) ? "M" : "D"; // 支配(M) vs 追随(D)
+    typeCode += (dimensionScores[1] > 30) ? "I" : "S"; // 独立(I) vs 依赖(S)
+    typeCode += (dimensionScores[2] > 30) ? "T" : "E"; // 稳定(T) vs 探索(E)
+    typeCode += (dimensionScores[3] > 30) ? "P" : "F"; // 务实(P) vs 理想(F)
+
+    const resultType = archetypeTypes[typeCode] || archetypeTypes['MIPT']; // 使用修复后的映射，默认改为 MIPT
+
+    // V5.4 修复: 确保 scores 存储的是 finalScores (4-20分制)
+    sessionStorage.setItem('testResult', JSON.stringify({
+        scores: finalScores, 
+        typeCode: typeCode,
+        archetypeIcon: resultType.icon,
+        archetypeName: resultType.name,
+        archetypeDesc: resultType.desc,
+        yearPref: resultType.yearPref
+    }));
+    
+    showFreeResult();
+}
         
         function showFreeResult() {
             const result = JSON.parse(sessionStorage.getItem('testResult'));
@@ -1996,6 +1996,7 @@ const avgScores = dimensionScores.map((score, i) =>
     </script>
 </body>
 </html>
+
 
 
 
