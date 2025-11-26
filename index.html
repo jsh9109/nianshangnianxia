@@ -1804,7 +1804,7 @@ function calculateResult() {
                 showFullReport();
             }
         }
-        
+function showFullReport() {        
        const result = JSON.parse(sessionStorage.getItem('testResult'));
     
 // V5.4 修复: 确保所有无关页面都被隐藏
@@ -1857,7 +1857,7 @@ if (result) {
 
 // 滚动到顶部，确保内容正确显示，解决可能由滚动条造成的“白色区域”问题
 window.scrollTo(0, 0);
-        
+        }
         function showAdminPanel() {
             // [V5.0] 修正了页面切换函数
             document.getElementById('cardVerifyPage').classList.add('hidden');
@@ -2043,6 +2043,7 @@ window.scrollTo(0, 0);
     </script>
 </body>
 </html>
+
 
 
 
