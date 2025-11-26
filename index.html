@@ -1625,17 +1625,20 @@ const archetypeTypes = {
             document.getElementById('nextBtn').textContent = currentQuestion === 39 ? '完成测评 ✓' : '下一题 →';
         }
         
-        function selectOption(value) {
-            answers[currentQuestion] = value;
-            // 自动下一题
-            setTimeout(() => {
-                if (currentQuestion < 39) {
-                    nextQuestion();
-                } else {
-                    renderQuestion(); // 刷新最后一个问题的选中状态
-                }
-            }, 200);
+function selectOption(value) {
+    answers[currentQuestion] = value;
+    // 自动下一题
+    setTimeout(() => {
+        if (currentQuestion < 39) {
+            nextQuestion();
+        } else {
+            // --- [V5.3 修复开始] ---
+            // 如果是第40题，选中后自动触发结果计算
+            calculateResult();
+            // --- [V5.3 修复结束] ---
         }
+    }, 200);
+}
         
         function prevQuestion() {
             if (currentQuestion > 0) {
@@ -1993,6 +1996,7 @@ const avgScores = dimensionScores.map((score, i) =>
     </script>
 </body>
 </html>
+
 
 
 
