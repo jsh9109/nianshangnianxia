@@ -1676,23 +1676,29 @@ function calculateResult() {
         dimensionScores[q.dimension] += score;
     });
     
-    // V5.4 修复: 重新计算 4-20 分制的分数，用于图表展示
+    // V5.4 修复: 计算 4-20 分制的分数，用于图表展示
     const finalScores = dimensionScores.map((score, i) => 
-        Math.round((score / dimensionCounts[i]) * 4) // (10-50分) / 10 * 4 => 4-20分
+        // 总分 10-50，转换为 4-20 分制
+        Math.round((score / dimensionCounts[i]) * 4) 
     );
     
-    // [V5.1] 16型人格计算：计算字母代号 (阈值 30，即平均分 3.0)
+    // V5.4 修复: 16型人格计算：计算字母代号 (阈值 30，严格大于 30 才算高倾向)
     let typeCode = "";
-    typeCode += (dimensionScores[0] > 30) ? "M" : "D"; // 支配(M) vs 追随(D)
-    typeCode += (dimensionScores[1] > 30) ? "I" : "S"; // 独立(I) vs 依赖(S)
-    typeCode += (dimensionScores[2] > 30) ? "T" : "E"; // 稳定(T) vs 探索(E)
-    typeCode += (dimensionScores[3] > 30) ? "P" : "F"; // 务实(P) vs 理想(F)
+    // 支配(M) vs 追随(D)：得分 > 30 选 M (年上倾向)
+    typeCode += (dimensionScores[0] > 30) ? "M" : "D"; 
+    // 独立(I) vs 依赖(S)：得分 > 30 选 I (年上倾向)
+    typeCode += (dimensionScores[1] > 30) ? "I" : "S"; 
+    // 稳定(T) vs 探索(E)：得分 > 30 选 T (年上倾向)
+    typeCode += (dimensionScores[2] > 30) ? "T" : "E"; 
+    // 务实(P) vs 理想(F)：得分 > 30 选 P (年上倾向)
+    typeCode += (dimensionScores[3] > 30) ? "P" : "F"; 
 
-    const resultType = archetypeTypes[typeCode] || archetypeTypes['MIPT']; // 使用修复后的映射，默认改为 MIPT
+    // 使用修复后的映射，如果找不到则默认给一个高年上类型 MIPT
+    const resultType = archetypeTypes[typeCode] || archetypeTypes['MIPT']; 
 
     // V5.4 修复: 确保 scores 存储的是 finalScores (4-20分制)
     sessionStorage.setItem('testResult', JSON.stringify({
-        scores: finalScores, 
+        scores: finalScores, // 现在使用已定义的 finalScores
         typeCode: typeCode,
         archetypeIcon: resultType.icon,
         archetypeName: resultType.name,
@@ -1799,18 +1805,58 @@ function calculateResult() {
             }
         }
         
-        function showFullReport() {
-            const result = JSON.parse(sessionStorage.getItem('testResult'));
-            
-            document.getElementById('cardVerifyPage').classList.add('hidden');
-            document.getElementById('testPage').classList.add('hidden');
-            document.getElementById('freeResultPage').classList.add('hidden');
-            document.getElementById('fullReportPage').classList.remove('hidden');
+       const result = JSON.parse(sessionStorage.getItem('testResult'));
+    
+// V5.4 修复: 确保所有无关页面都被隐藏
+document.getElementById('cardVerifyPage').classList.add('hidden');
+document.getElementById('testPage').classList.add('hidden');
+document.getElementById('freeResultPage').classList.add('hidden');
+document.getElementById('adminPanel').classList.add('hidden'); 
 
-            // ... (其余填充代码) ...
-            
-            window.scrollTo(0, 0);
+// 显示完整报告页
+document.getElementById('fullReportPage').classList.remove('hidden');
+
+// V5.4 填充完整报告内容
+if (result) {
+    // 填充结果 banner
+    document.getElementById('fullArchetypeIcon').textContent = result.archetypeIcon;
+    document.getElementById('fullArchetypeName').textContent = result.archetypeName + ' (' + result.typeCode + ')';
+
+    // 获取当前原型描述 (请确保您使用了最新的 archetypeTypes 对象)
+    const currentType = archetypeTypes[result.typeCode] || archetypeTypes['MIPT'];
+    
+    // 填充第一部分
+    document.querySelector('#fullReportPage .report-section h4').textContent = '你的原型：“' + currentType.name + '”';
+    document.querySelector('#fullReportPage .report-section p').textContent = currentType.desc;
+
+    // 突出显示当前类型在 16 型图鉴中的位置
+    const paidTypeList = document.getElementById('paidTypeList');
+    // 清理原有列表内容
+    paidTypeList.innerHTML = '';
+    
+    // 遍历 archetypeTypes 填充 16 个类型
+    // 注意: 您需要在我第一个回复中复制的完整 archetypeTypes 对象
+    Object.keys(archetypeTypes).forEach(key => {
+        const type = archetypeTypes[key];
+        const typeDiv = document.createElement('div');
+        typeDiv.className = 'personality-type';
+        if (key === result.typeCode) {
+            typeDiv.classList.add('current');
         }
+        typeDiv.innerHTML = `
+            <div class="type-number">${key}</div>
+            <div class="type-name">${type.name}</div>
+            <div class="type-score">${type.yearPref}型</div>
+        `;
+        paidTypeList.appendChild(typeDiv);
+    });
+
+    // 绘制完整的雷达图
+    drawRadarChart('fullRadarChart', result.scores);
+}
+
+// 滚动到顶部，确保内容正确显示，解决可能由滚动条造成的“白色区域”问题
+window.scrollTo(0, 0);
         
         function showAdminPanel() {
             // [V5.0] 修正了页面切换函数
@@ -1997,6 +2043,7 @@ function calculateResult() {
     </script>
 </body>
 </html>
+
 
 
 
