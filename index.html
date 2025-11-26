@@ -2010,4 +2010,14 @@
                 btn.textContent = originalText;
             }).catch(err => {
                 console.error(err);
-                alert('生成失败，请手动截图保存'
+                alert('生成失败，请手动截图保存');
+                btn.textContent = originalText;
+            });
+        }
+
+        function closeSaveModal() {
+            document.getElementById('saveModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
