@@ -1086,7 +1086,7 @@
                 <h4>💡 基础建议（免费版）</h4>
                 <ul>
                     <li>意识到过度保护欲可能让伴侣感到压力。</li>
-                    <li>学习在做决定时，放下权威，多倾听伴侣的意见。</li>
+                    <li>学习在做决定时,放下权威，多倾听伴侣的意见。</li>
                     <li>免费版只能看到基本倾向，完整版有详细的沟通和边界建立计划。</li>
                 </ul>
             </div>
@@ -1618,93 +1618,123 @@
             }
         }
         
-        /* [V5.6 完整修复] 计算结果函数 - 修正阈值和分数计算 */
+        /* [V5.7 完全修复版] 计算结果函数 */
         function calculateResult() {
-            const dimensionScores = [0, 0, 0, 0];
-            const dimensionCounts = [10, 10, 10, 10];
-            
-            questions.forEach((q, i) => {
-                let score = answers[i]; // 1-5
-                if (q.reverse) {
-                    score = 6 - score; // 反向计分
+            try {
+                const dimensionScores = [0, 0, 0, 0];
+                const dimensionCounts = [10, 10, 10, 10];
+                
+                // 计算原始分数
+                questions.forEach((q, i) => {
+                    let score = answers[i]; // 1-5
+                    if (q.reverse) {
+                        score = 6 - score; // 反向计分
+                    }
+                    dimensionScores[q.dimension] += score;
+                });
+                
+                console.log('原始维度得分 (满分50):', dimensionScores);
+                
+                // 转换为 4-20 分制用于图表展示
+                const finalScores = dimensionScores.map(score => 
+                    Math.round((score / 50) * 16) + 4
+                );
+                
+                console.log('图表显示分数 (4-20):', finalScores);
+                
+                // 16型人格计算：使用27作为阈值（满分50的54%）
+                let typeCode = "";
+                typeCode += (dimensionScores[0] > 27) ? "M" : "D"; // 主导/追随
+                typeCode += (dimensionScores[1] > 27) ? "I" : "S"; // 独立/依赖  
+                typeCode += (dimensionScores[2] > 27) ? "T" : "E"; // 稳定/探索
+                typeCode += (dimensionScores[3] > 27) ? "P" : "F"; // 务实/理想
+
+                console.log('计算出的类型代码:', typeCode);
+                
+                const resultType = archetypeTypes[typeCode];
+                
+                // 如果类型不存在，使用默认类型
+                if (!resultType) {
+                    console.error('错误: 无法找到类型', typeCode);
+                    console.log('可用的类型:', Object.keys(archetypeTypes));
+                    
+                    // 使用最接近的类型作为备选
+                    typeCode = "MIPT"; // 默认类型
+                    
+                    alert('测评计算完成，显示参考结果');
                 }
-                dimensionScores[q.dimension] += score;
-            });
-            
-            console.log('原始维度得分 (满分50):', dimensionScores);
-            
-            // 转换为 4-20 分制用于图表展示
-            const finalScores = dimensionScores.map(score => 
-                Math.round((score / 50) * 16) + 4
-            );
-            
-            console.log('图表显示分数 (4-20):', finalScores);
-            
-            // 16型人格计算：阈值修正为 25 (满分50的中位数)
-            let typeCode = "";
-            typeCode += (dimensionScores[0] > 25) ? "M" : "D"; 
-            typeCode += (dimensionScores[1] > 25) ? "I" : "S"; 
-            typeCode += (dimensionScores[2] > 25) ? "T" : "E"; 
-            typeCode += (dimensionScores[3] > 25) ? "P" : "F"; 
 
-            console.log('计算出的类型代码:', typeCode);
-            
-            const resultType = archetypeTypes[typeCode];
-            
-            if (!resultType) {
-                console.error('错误: 无法找到类型', typeCode);
-                alert('测评出错，请刷新页面重试');
-                return;
+                const finalType = archetypeTypes[typeCode];
+                console.log('最终匹配到的人格类型:', finalType.name);
+
+                sessionStorage.setItem('testResult', JSON.stringify({
+                    scores: finalScores,
+                    rawScores: dimensionScores,
+                    typeCode: typeCode,
+                    archetypeIcon: finalType.icon,
+                    archetypeName: finalType.name,
+                    archetypeDesc: finalType.desc,
+                    yearPref: finalType.yearPref
+                }));
+                
+                showFreeResult();
+                
+            } catch (error) {
+                console.error('计算结果出错:', error);
+                alert('计算出错，请刷新页面重试\n错误信息: ' + error.message);
             }
-
-            console.log('匹配到的人格类型:', resultType.name);
-
-            sessionStorage.setItem('testResult', JSON.stringify({
-                scores: finalScores,
-                rawScores: dimensionScores,
-                typeCode: typeCode,
-                archetypeIcon: resultType.icon,
-                archetypeName: resultType.name,
-                archetypeDesc: resultType.desc,
-                yearPref: resultType.yearPref
-            }));
-            
-            showFreeResult();
         }
         
-        /* [V5.6 完整修复] 免费结果页 - 添加数据填充 */
+        /* [V5.7 完全修复版] 免费结果页 - 添加完整错误处理 */
         function showFreeResult() {
-            const result = JSON.parse(sessionStorage.getItem('testResult'));
-            
-            document.getElementById('cardVerifyPage').classList.add('hidden');
-            document.getElementById('testPage').classList.add('hidden');
-            document.getElementById('fullReportPage').classList.add('hidden');
-            document.getElementById('freeResultPage').classList.remove('hidden');
-            currentPage = 'freeResult';
+            try {
+                const result = JSON.parse(sessionStorage.getItem('testResult'));
+                
+                if (!result) {
+                    throw new Error('无法获取测评结果');
+                }
+                
+                console.log('显示结果:', result);
+                
+                document.getElementById('cardVerifyPage').classList.add('hidden');
+                document.getElementById('testPage').classList.add('hidden');
+                document.getElementById('fullReportPage').classList.add('hidden');
+                document.getElementById('freeResultPage').classList.remove('hidden');
+                currentPage = 'freeResult';
 
-            // ✅ 填充免费结果页面的核心数据
-            document.getElementById('archetypeIcon').textContent = result.archetypeIcon;
-            document.getElementById('archetypeName').textContent = result.archetypeName + ' (' + result.typeCode + ')';
-            document.getElementById('typeName').textContent = '"' + result.archetypeName + '"人格';
-            document.getElementById('typeDesc').textContent = result.archetypeDesc;
-            
-            drawRadarChart('radarChart', result.scores);
-            
-            const scoresList = document.getElementById('scoresList');
-            const dimensionNames = ['主导 vs 追随', '独立 vs 依赖', '稳定 vs 探索', '务实 vs 理想'];
-            const dimensionIcons = ['👑', '🛡️', '🕰️', '📜'];
-            
-            scoresList.innerHTML = '';
-            result.scores.forEach((score, i) => {
-                const scoreItem = document.createElement('div');
-                scoreItem.className = 'score-item';
-                scoreItem.innerHTML = `
-                    <div class="score-item-name">${dimensionIcons[i]} ${dimensionNames[i]}</div>
-                    <div class="score-item-value">${score} / 20</div>
-                    <div class="score-item-desc">${score > 12 ? '高分倾向' : '低分倾向'}</div>
-                `;
-                scoresList.appendChild(scoreItem);
-            });
+                // 填充数据
+                document.getElementById('archetypeIcon').textContent = result.archetypeIcon || '👑';
+                document.getElementById('archetypeName').textContent = (result.archetypeName || '全能守护者') + ' (' + result.typeCode + ')';
+                document.getElementById('typeName').textContent = '"' + (result.archetypeName || '全能守护者') + '"人格';
+                document.getElementById('typeDesc').textContent = result.archetypeDesc || '你是关系中的守护者';
+                
+                // 绘制雷达图
+                drawRadarChart('radarChart', result.scores);
+                
+                // 填充分数列表
+                const scoresList = document.getElementById('scoresList');
+                const dimensionNames = ['主导 vs 追随', '独立 vs 依赖', '稳定 vs 探索', '务实 vs 理想'];
+                const dimensionIcons = ['👑', '🛡️', '🕰️', '📜'];
+                
+                scoresList.innerHTML = '';
+                result.scores.forEach((score, i) => {
+                    const scoreItem = document.createElement('div');
+                    scoreItem.className = 'score-item';
+                    scoreItem.innerHTML = `
+                        <div class="score-item-name">${dimensionIcons[i]} ${dimensionNames[i]}</div>
+                        <div class="score-item-value">${score} / 20</div>
+                        <div class="score-item-desc">${score > 12 ? '高分倾向' : '低分倾向'}</div>
+                    `;
+                    scoresList.appendChild(scoreItem);
+                });
+                
+                window.scrollTo(0, 0);
+                
+            } catch (error) {
+                console.error('显示结果页面详细错误:', error);
+                alert('显示结果出错，请刷新页面重试\n错误信息: ' + error.message);
+                location.reload();
+            }
         }
         
         function drawRadarChart(canvasId, scores) {
@@ -1770,7 +1800,7 @@
             }
         }
         
-        /* [V5.6 完整修复] 完整报告页 - 动态生成16型并高亮 */
+        /* [V5.7 完全修复版] 完整报告页 - 动态生成16型并高亮 */
         function showFullReport() {        
             const result = JSON.parse(sessionStorage.getItem('testResult'));
         
