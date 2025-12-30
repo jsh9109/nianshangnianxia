@@ -1010,7 +1010,7 @@
                     <li>40题专业心理量表</li>
                     <li>4大核心维度分析</li>
                     <li>16型角色原型匹配</li>
-                    <li><strong style="color:#D55D30;">千字深度报告+专属行动方案 (¥4.9解锁)</strong></li>
+                    <li><strong style="color:#D55D30;">千字深度报告+专属行动方案 (¥0.99元解锁)</strong></li>
                 </ul>
             </div>
             
@@ -1122,7 +1122,7 @@
                 
                 <div class="price-tag">
                     <div class="original-price">原价 ¥29.9</div>
-                    <div class="current-price">¥4.9</div>
+                    <div class="current-price">¥0.99元</div>
                     <div class="price-note">限时特惠 · 一杯咖啡的价格换来一段健康的亲密关系</div>
                 </div>
                 
@@ -2020,6 +2020,9 @@ console.warn('使用默认类型:', typeCode);
     </script>
 </body>
 </html>
+
+
+
 
 
 
